@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap");
+
+ul,
+li {
+  list-style: none;
+}
+
+/* 글꼴 스타일 종합 */
+h1 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 3rem; /* 3rem */
+  color: #5d688a; /* 지정 색상 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
+h2 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 2rem; /* 2rem */
+  color: #555879; /* 지정 색상 */
+  margin: 0;
+}
+
+p,
+span {
+  font-family: "Noto Sans KR", sans-serif; /* Noto Sans KR Regular */
+  font-weight: 400; /* Regular */
+  font-size: 1rem;
+  color: #1e2939;
+}
+
+/* ToWear.css */
+.container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  /* border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2; */
+  text-align: center;
+  background: linear-gradient(to bottom, #e2fce2, #d3f5d3, #c3fcc3);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+}
+
+.card {
+  padding: 15px;
+  border-radius: 12px;
+  background: #ffffff;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.weather-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.card.temp-card {
+  background: #a9ffc6;
+  margin: 20px auto;
+  align-items: center;
+  flex: 1;
+  transition: transform 0.3s ease;
+}
+
+.card.temp-card:hover {
+  transform: scale(1.05);
+}
+
+.card.right-card {
+  background: #d1ffb3;
+  margin: 20px auto;
+  flex: 2;
+  transition: transform 0.3s ease;
+}
+
+.card.right-card:hover {
+  transform: scale(1.03);
+}
+
+.line {
+  margin: 12px 0;
+  border: none;
+  height: 1.5px;
+  background-color: rgb(105, 204, 40);
+}
+
+.right-card .hover-text {
+  display: none;
+}
+
+.right-card .weather-info,
+.right-card h2 {
+  transition: opacity 0.3s ease;
+}
+
+.right-card:hover .hover-text {
+  display: block;
+}
+
+.clothes-description {
+  margin-bottom: 15px;
+}
+
+.clothes-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.clothes-card {
+  /* flex: 1 1 calc(20% - 12px); */
+  /* max-width: calc(20% - 12px); */
+  flex: 0 0 200px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  background: linear-gradient(to bottom, #b8e7b8, #bce5bc, #e3f3e3);
+  transition: transform 0.3s ease, box-shadow 0.1s ease;
+}
+
+.clothes-card:hover {
+  background: linear-gradient(to bottom, #70a170, #70a170, #99ce99);
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.clothes-card:hover .card-name {
+  color: rgb(255, 255, 255);
+}
+
+.clothes-card img.clothes-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* 슬라이더 */
+input[type="range"] {
+  /* -webkit-appearance: none;  */
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, #007bff, #33c733, #ff7f00);
+  outline: none;
+  margin: 0 10px;
+}
+
+.slider-box {
+  position: relative;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #f3fff2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px; /* 너무 넓지 않게 제한 */
+  text-align: center;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px; /* 슬라이더와 레이블 간 간격 */
+  color: #333;
+  padding: 0 4px; /* 약간의 여백 */
+}
+
+.slider-label {
+  margin-top: 13px;
+  font-size: 0.9rem;
+}
+
+/* 슬라이더 */
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  /* background: linear-gradient(to right, #57a0ee, #80e980, #f7a95c); */
+  background: linear-gradient(to right, #a7c7ee, #b3e6b3, #f7d3a7);
+  outline: none;
+  margin: 0; /* 좌우 여백 제거 */
+  display: block;
+}
+
+/* 슬라이더 thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 24px;
+  border-radius: 20%;
+  background: #467546;
+  border: 2px solid #73b671;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+
+  /* 지퍼 느낌 세로줄 */
+  background-image: repeating-linear-gradient(
+    90deg,
+    /* 가로 방향 */ #73b671 0px,
+    /* 줄 시작 */ #73b671 3px,
+    /* 줄 끝 */ transparent 2px,
+    /* 줄 끝 바로 투명 */ transparent 6px /* 한 줄 + 간격 길이 */
+  );
+}
+
+/* input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #888;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  background-image: repeating-linear-gradient(
+    90deg,
+    #888 0px,
+    #888 2px,
+    #fff 2px,
+    #fff 4px
+  );
+} */
+
+/* 반응형 768px 이하일 때*/
+
+@media (max-width: 768px) {
+  .right-card {
+    display: none !important;
+  }
+
+  .temp-card {
+    width: 100%;
+  }
+
+  .clothes-card img,
+  .clothes-image {
+    display: none !important;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  p,
+  span {
+    font-size: 1rem;
+  }
+  /* .clothes-card {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .clothes-cards {
+    display: flex;
+
+    gap: 12px;
+  } */
+}
+
+/* @media (max-width: 767px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  p,
+  span {
+    font-size: 0.875rem;
+  }
+} */
