@@ -1,0 +1,289 @@
+.todo {
+  background: #f9dede;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.todo-container {
+  padding-top: 60px;
+}
+@media (max-width: 1240px) {
+  .todo-container {
+    padding: 60px 20px 0;
+  }
+}
+.todo .title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 날짜 */
+.todo .clock-box {
+  width: 100%;
+  background: #f1f4ff;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.todo .clock-box p {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .todo .clock-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .todo .clock-box p {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* 할일 추가 */
+.todo-input {
+  background: #f5f7ff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.todo-input .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-input .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.todo-input .row span {
+  display: inline-block;
+  font-weight: medium;
+}
+
+.todo-input .row input[type="text"],
+.todo-input .row input[type="date"] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  color: var(--sub-text);
+  background: white;
+}
+.todo-input .row input[type="date"] {
+  flex: 0 0 auto;
+}
+.todo-input .row input:focus {
+  outline: none;
+  border-color: var(--border-color);
+}
+
+.todo-input .row button {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  background: var(--border-color);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.todo-input .row button:hover {
+  opacity: 0.9;
+}
+@media (max-width: 768px) {
+  .todo-input .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .todo-input .row span {
+    font-size: 0.9rem;
+    margin: 0 auto;
+  }
+  .todo-input .row input[type="text"],
+  .todo-input .row input[type="date"] {
+    width: 100%;
+    text-align: center;
+  }
+  .todo-input .row button {
+    width: 100%;
+  }
+}
+
+/* 조회, 달성률 */
+.todo-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* TodoSearch */
+.todo-search {
+  margin-bottom: 20px;
+}
+
+.todo-search .search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.todo-search input[type="date"] {
+  padding: 10px 50px 10px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: white;
+  color: var(--sub-text);
+}
+
+.todo-search input:focus {
+  outline: none;
+  border-color: var(--border-color);
+}
+
+.todo-search .clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: none;
+  background: var(--border-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.todo-search .clear-btn:hover {
+  opacity: 0.9;
+}
+
+/* 달성률 */
+.todo-progress {
+  background: var(--border-color);
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 700;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.todo-list .empty {
+  padding: 20px 0;
+  text-align: center;
+  color: var(--sub-title);
+}
+
+@media (max-width: 768px) {
+  .todo-search {
+    margin-bottom: 0;
+  }
+  .todo-filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* TodoList */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.todo-list .empty {
+  padding: 20px 0;
+  text-align: center;
+  color: var(--sub-title);
+}
+
+/* TodoItem */
+.todo-item {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.todo-item .checkbox-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-item .checkbox-col input {
+  width: 18px;
+  height: 18px;
+}
+
+.todo-item .title-col {
+  flex: 1;
+  color: var(--sub-text);
+}
+
+.todo-item .title-col.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.todo-item .date-col {
+  font-size: 0.85rem;
+  color: var(--sub-title);
+}
+
+.todo-item .btn-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-item .btn-col button {
+  border: none;
+  background: #e4e4e4;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.todo-item .btn-col button:hover {
+  background: #d1d1d1;
+}
+
+.todo-item .edit-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.todo-item .edit-date {
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
