@@ -58,7 +58,7 @@ span {
 }
 
 .card.temp-card {
-  background: #a9ffc6;
+  background: #f3fff2;
   margin: 20px auto;
   align-items: center;
   flex: 1;
@@ -70,7 +70,8 @@ span {
 }
 
 .card.right-card {
-  background: #d1ffb3;
+  position: relative;
+  background: #f3fff2;
   margin: 20px auto;
   flex: 2;
   transition: transform 0.3s ease;
@@ -84,11 +85,28 @@ span {
   margin: 12px 0;
   border: none;
   height: 1.5px;
-  background-color: rgb(105, 204, 40);
+  background-color: rgb(206, 243, 181);
 }
 
 .right-card .hover-text {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f3fff2;
+  padding: 15px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.right-card:hover .hover-text {
+  display: flex;
 }
 
 .right-card .weather-info,
@@ -96,8 +114,10 @@ span {
   transition: opacity 0.3s ease;
 }
 
-.right-card:hover .hover-text {
-  display: block;
+.right-card:hover .weather-info,
+.right-card:hover h2 {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .clothes-description {
@@ -142,17 +162,6 @@ span {
   margin-bottom: 12px;
 }
 
-/* 슬라이더 */
-input[type="range"] {
-  /* -webkit-appearance: none;  */
-  width: 100%;
-  height: 12px;
-  border-radius: 6px;
-  background: linear-gradient(to right, #007bff, #33c733, #ff7f00);
-  outline: none;
-  margin: 0 10px;
-}
-
 .slider-box {
   position: relative;
   margin: 20px auto;
@@ -176,6 +185,10 @@ input[type="range"] {
 .slider-label {
   margin-top: 13px;
   font-size: 0.9rem;
+}
+
+.button-label {
+  display: none;
 }
 
 /* 슬라이더 */
@@ -208,10 +221,10 @@ input[type="range"]::-webkit-slider-thumb {
   /* 지퍼 느낌 세로줄 */
   background-image: repeating-linear-gradient(
     90deg,
-    /* 가로 방향 */ #73b671 0px,
-    /* 줄 시작 */ #73b671 3px,
-    /* 줄 끝 */ transparent 2px,
-    /* 줄 끝 바로 투명 */ transparent 6px /* 한 줄 + 간격 길이 */
+    #73b671 0px,
+    #73b671 3px,
+    transparent 2px,
+    transparent 6px
   );
 }
 
@@ -284,3 +297,94 @@ input[type="range"]::-webkit-slider-thumb {
     font-size: 0.875rem;
   }
 } */
+
+/* 슬라이더 버튼 */
+
+.slider-buttons {
+  display: none;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 15px;
+}
+
+.slider-btn {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.2s;
+
+  display: flex; /* 버튼 내부 콘텐츠를 Flex 컨테이너로 만듭니다. */
+  align-items: center; /* 텍스트와 아이콘을 세로 중앙 정렬합니다. */
+  justify-content: center; /* 버튼 내부 전체 콘텐츠를 가로 중앙 정렬합니다. */
+}
+
+.slider-btn:hover {
+  transform: scale(1.1);
+}
+
+.left-btn {
+  width: 50%;
+  min-width: 50px;
+  background: linear-gradient(to right, #a7c7ee, #b3e6b3);
+}
+
+.left-btn svg {
+  color: gray;
+}
+
+.left-btn:hover svg {
+  color: #3b4b3b;
+}
+
+.right-btn svg {
+  color: gray;
+}
+
+.right-btn:hover svg {
+  color: #3b4b3b;
+}
+
+.right-btn {
+  width: 50%;
+  min-width: 50px;
+  background: linear-gradient(to right, #b3e6b3, #f7d3a7);
+}
+
+@media (max-width: 466px) {
+  input[type="range"] {
+    display: none !important;
+  }
+
+  .slider-buttons {
+    display: flex !important;
+  }
+
+  .slider-labels {
+    display: none !important;
+  }
+
+  .slider-label {
+    display: none !important;
+  }
+
+  .button-label {
+    display: block !important;
+  }
+}
+
+@media (max-width: 300px) {
+  .slider-buttons {
+    /* 👈 이 세 줄을 추가/수정하여 세로 정렬 및 간격 조정 */
+    align-items: center;
+    flex-direction: column; /* 아이템을 세로로 쌓습니다 (오른쪽 버튼이 왼쪽 버튼 밑으로). */
+    /* 부모 컨테이너(slider-box)의 너비를 꽉 채우도록 설정 */
+    gap: 10px; /* 버튼 사이의 세로 간격을 좁혀줍니다. */
+  }
+
+  .slider-buttons .slider-btn {
+    width: 50%;
+  }
+}

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { MapPinned, ThermometerSun } from "lucide-react";
 import { IoWaterSharp, IoSunnyOutline } from "react-icons/io5";
-import { WiDust } from "react-icons/wi";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { FiWind } from "react-icons/fi";
 import "./ToWear.css";
 
@@ -132,6 +132,8 @@ export default function ToWear() {
   const [airQuality, setAirQuality] = useState(null);
   const [uvIndex, setUvIndex] = useState(null);
   const [humidity, setHumidity] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [originalLocationDoc, setOriginalLocationDoc] = useState(null);
 
   const formatAirQuality = (aqi) => {
     switch (aqi) {
@@ -157,6 +159,49 @@ export default function ToWear() {
     if (uv < 11) return "매우 높음";
     return "위험";
   };
+
+  const formatLocationByWidth = (doc, width) => {
+    if (!doc) return "위치 불러오는 중...";
+
+    let locationString = doc.region_1depth_name;
+
+    if (width > 1131) {
+      locationString += ` ${doc.region_2depth_name || ""} ${
+        doc.region_3depth_name || ""
+      }`; // 예: 서울특별시 강남구 역삼동
+    } else if (width > 874) {
+      locationString += ` ${doc.region_2depth_name || ""}`; // 예: 서울특별시 강남구
+    } else if (width > 768) {
+    } else {
+      if (width > 378) {
+        locationString += ` ${doc.region_2depth_name || ""} ${
+          doc.region_3depth_name || ""
+        }`;
+      } else if (width > 303) {
+        locationString += ` ${doc.region_2depth_name || ""}`;
+      } else {
+      }
+    }
+
+    return locationString.trim();
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (originalLocationDoc) {
+      setLocation(formatLocationByWidth(originalLocationDoc, windowWidth));
+    }
+  }, [windowWidth, originalLocationDoc]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -197,12 +242,13 @@ export default function ToWear() {
       const doc = kakaoData.documents?.[0];
 
       if (doc) {
-        setLocation(
-          `${doc.region_1depth_name} ${doc.region_2depth_name} ${doc.region_3depth_name}`
-        );
+        setOriginalLocationDoc(doc);
+        setLocation(formatLocationByWidth(doc, window.innerWidth));
+      } else {
+        setLocation("위치 정보 없음");
       }
     });
-  });
+  }, []);
 
   // 슬라이더 구간별 옷 선택
   const getClothingIndex = () => {
@@ -251,22 +297,23 @@ export default function ToWear() {
             <ThermometerSun />{" "}
             {temp !== null ? `${temp}°C` : "날씨 불러오는 중..."}
           </h2>
-          <h1>
+          <h2>
             {typeof temp === "number"
               ? temp <= 0
-                ? "🥶"
-                : temp >= 1 && temp <= 9
-                ? "😨"
-                : temp >= 10 && temp <= 20
-                ? "🙂"
-                : temp >= 21 && temp <= 29
-                ? "😎"
-                : "🥵"
+                ? "☃ 추운 날씨"
+                : temp >= 1 && temp <= 15
+                ? "❄ 쌀쌀한 날씨"
+                : temp >= 16 && temp <= 25
+                ? "🙂 적당한 날씨"
+                : temp >= 26 && temp <= 29
+                ? "😎 따뜻한 날씨"
+                : "🥵 무더운 날씨"
               : "❓"}
-          </h1>
+          </h2>
         </div>
         <div className="card right-card">
           <h2>오늘 날씨 정보</h2>
+          <hr className="line" />
           <ul className="weather-info">
             <li>
               <p>
@@ -291,15 +338,19 @@ export default function ToWear() {
               </p>
             </li>
           </ul>
-          <hr className="line" />
+
           <div className="hover-text">
             <p>
               {typeof temp === "number"
                 ? temp <= 0
                   ? "🧣 오늘은 정말 추워요! 따뜻하게 입고 나가세요 🧤"
-                  : temp >= 30
-                  ? "🕶️ 무더운 날씨! 시원하게 입고 나가세요 🥤"
-                  : "🌤️ 좋은 날씨예요! 가볍게 나가도 괜찮아요 🌤️"
+                  : temp < 15
+                  ? "🧥 오늘은 조금 쌀쌀해요! 겉옷 챙기는 건 어때요?"
+                  : temp < 25
+                  ? "🍃 선선한 날씨예요! 산책하기 좋은 날씨예요 😊"
+                  : temp < 30
+                  ? "☀️ 따뜻한 날씨예요! 가볍게 입고 나가도 좋아요 😄"
+                  : "🕶️ 무더운 날씨! 시원하게 입고 나가세요 🥤"
                 : "오늘의 날씨를 기다리는 중..."}
             </p>
           </div>
@@ -332,7 +383,28 @@ export default function ToWear() {
           onChange={(e) => setSliderValue(Number(e.target.value))}
           className="slider"
         />
-
+        <div className="slider-buttons">
+          <button
+            type="button"
+            className="slider-btn left-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setSliderValue((v) => Math.max(v - 25, 0));
+            }}
+          >
+            <FaLongArrowAltLeft />
+          </button>
+          <button
+            type="button"
+            className="slider-btn right-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setSliderValue((v) => Math.min(v + 25, 100));
+            }}
+          >
+            <FaLongArrowAltRight />
+          </button>
+        </div>
         <p
           className="slider-label"
           style={{
@@ -341,6 +413,15 @@ export default function ToWear() {
           }}
         >
           슬라이더를 움직여 옷의 두께를 조절하세요
+        </p>
+        <p
+          className="slider-label button-label"
+          style={{
+            left: `calc(${sliderValue}% -12px)`,
+            color: getGrandientColor(sliderValue),
+          }}
+        >
+          버튼을 눌러 옷의 두께를 조절하세요
         </p>
       </div>
     </div>
