@@ -41,7 +41,7 @@ export default function TodoItem({
 
       {!isEdit ? (
         <>
-          <div className="title-col">{content}</div>
+          <div className={`title-col ${isDone ? "done" : ""}`}>{content}</div>
 
           <div className="date-col">
             {new Date(date).toLocaleDateString("ko-KR", {
