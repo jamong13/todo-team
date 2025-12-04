@@ -21,3 +21,27 @@
   color: var(--sub-text);
   font-weight: demi-light;
 }
+
+@media (max-width: 1240px) {
+  .title {
+    font-size: 2.25rem;
+  }
+  .subtitle {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  .subtitle {
+    font-size: 1.4rem;
+  }
+  body {
+    font-size: 0.9rem;
+  }
+  .subtext {
+    font-size: 0.8rem;
+  }
+}
