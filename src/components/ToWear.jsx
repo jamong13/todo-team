@@ -1,4 +1,3 @@
-// ToWear.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MapPinned, ThermometerSun } from "lucide-react";
@@ -119,11 +118,11 @@ const clothingOptions = [
 
 // 현재 온도 기준 슬라이더 초기값
 const tempToSlider = (t) => {
-  if (t <= 0) return 10; // 추운 날씨 중앙
-  if (t <= 9) return 30; // 쌀쌀한 날씨 중앙
-  if (t <= 20) return 50; // 적당한 날씨 중앙
-  if (t <= 29) return 70; // 조금 더운 날씨 중앙
-  return 90; // 무더운 날씨 중앙
+  if (t <= 0) return 10;
+  if (t <= 9) return 30;
+  if (t <= 20) return 50;
+  if (t <= 29) return 70;
+  return 90;
 };
 
 export default function ToWear() {
@@ -170,9 +169,9 @@ export default function ToWear() {
     if (width > 1194) {
       locationString += ` ${doc.region_2depth_name || ""} ${
         doc.region_3depth_name || ""
-      }`; // 예: 서울특별시 강남구 역삼동
+      }`;
     } else if (width > 874) {
-      locationString += ` ${doc.region_2depth_name || ""}`; // 예: 서울특별시 강남구
+      locationString += ` ${doc.region_2depth_name || ""}`;
     } else if (width > 768) {
     } else {
       if (width > 378) {
@@ -254,31 +253,29 @@ export default function ToWear() {
 
   // 슬라이더 구간별 옷 선택
   const getClothingIndex = () => {
-    if (sliderValue <= 20) return 0; // 추운 날씨
-    if (sliderValue <= 40) return 1; // 쌀쌀한 날씨
-    if (sliderValue <= 60) return 2; // 적당한 날씨
-    if (sliderValue <= 80) return 3; // 조금 더운 날씨
-    return 4; // 무더운 날씨
+    if (sliderValue <= 20) return 0;
+    if (sliderValue <= 40) return 1;
+    if (sliderValue <= 60) return 2;
+    if (sliderValue <= 80) return 3;
+    return 4;
   };
 
   const currentClothes = clothingOptions[getClothingIndex()];
 
   const getGrandientColor = (value) => {
     if (value <= 50) {
-      // 0부터 50까지: 깊은 파랑(70, 100, 150)에서 청록색(100, 150, 150)으로
       const ratio = value / 50;
       const r = Math.round(70 + (100 - 70) * ratio);
       const g = Math.round(100 + (150 - 100) * ratio);
       const b = Math.round(150 + (150 - 150) * ratio);
       return `rgb(${r}, ${g}, ${b})`;
     } else {
-      // 50부터 100까지: 청록색(100, 150, 150)에서 RGB(244, 171, 93)으로
       const ratio = (value - 50) / 50;
-      // R: 100 -> 244
+
       const r = Math.round(100 + (244 - 100) * ratio);
-      // G: 150 -> 171
+
       const g = Math.round(150 + (171 - 150) * ratio);
-      // B: 150 -> 93
+
       const b = Math.round(150 + (93 - 150) * ratio);
       return `rgb(${r}, ${g}, ${b})`;
     }

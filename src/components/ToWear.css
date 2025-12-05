@@ -387,13 +387,12 @@ input[type="range"]::-webkit-slider-thumb {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 330px) {
   .slider-buttons {
-    /* 👈 이 세 줄을 추가/수정하여 세로 정렬 및 간격 조정 */
     align-items: center;
-    flex-direction: column; /* 아이템을 세로로 쌓습니다 (오른쪽 버튼이 왼쪽 버튼 밑으로). */
-    /* 부모 컨테이너(slider-box)의 너비를 꽉 채우도록 설정 */
-    gap: 10px; /* 버튼 사이의 세로 간격을 좁혀줍니다. */
+    flex-direction: column;
+
+    gap: 10px;
   }
 
   .slider-buttons .slider-btn {
