@@ -1,5 +1,6 @@
 // ToWear.jsx
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { MapPinned, ThermometerSun } from "lucide-react";
 import { IoWaterSharp, IoSunnyOutline } from "react-icons/io5";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
@@ -134,6 +135,7 @@ export default function ToWear() {
   const [humidity, setHumidity] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [originalLocationDoc, setOriginalLocationDoc] = useState(null);
+  const navigate = useNavigate();
 
   const formatAirQuality = (aqi) => {
     switch (aqi) {
@@ -165,7 +167,7 @@ export default function ToWear() {
 
     let locationString = doc.region_1depth_name;
 
-    if (width > 1131) {
+    if (width > 1194) {
       locationString += ` ${doc.region_2depth_name || ""} ${
         doc.region_3depth_name || ""
       }`; // 예: 서울특별시 강남구 역삼동
@@ -284,20 +286,25 @@ export default function ToWear() {
 
   return (
     <div className="container">
-      <h1 className="title">오늘의 옷 추천</h1>
-
+      <div className="app-header">
+        {/* <div className="back-button" onClick={() => navigate("/")}>
+          ←
+        </div> */}
+        <h1 className="title">오늘의 옷 추천</h1>
+        <div className="right-space"></div>
+      </div>
       <div className="weather-wrapper">
         <div className="card temp-card">
           {/* <h2>오늘 기온</h2> */}
-          <h2>
+          <h3>
             <MapPinned /> {location}
-          </h2>
-          <h2>
+          </h3>
+          <h3>
             {" "}
             <ThermometerSun />{" "}
             {temp !== null ? `${temp}°C` : "날씨 불러오는 중..."}
-          </h2>
-          <h2>
+          </h3>
+          <h3>
             {typeof temp === "number"
               ? temp <= 0
                 ? "☃ 추운 날씨"
@@ -309,7 +316,7 @@ export default function ToWear() {
                 ? "😎 따뜻한 날씨"
                 : "🥵 무더운 날씨"
               : "❓"}
-          </h2>
+          </h3>
         </div>
         <div className="card right-card">
           <h2>오늘 날씨 정보</h2>

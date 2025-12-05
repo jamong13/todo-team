@@ -23,6 +23,14 @@ h2 {
   margin: 0;
 }
 
+h3 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 1.75rem;
+  color: #555879; /* 지정 색상 */
+  margin: 0;
+}
+
 p,
 span {
   font-family: "Noto Sans KR", sans-serif; /* Noto Sans KR Regular */
@@ -61,6 +69,7 @@ span {
   background: #f3fff2;
   margin: 20px auto;
   align-items: center;
+  line-height: 3.2rem;
   flex: 1;
   transition: transform 0.3s ease;
 }
@@ -263,14 +272,17 @@ input[type="range"]::-webkit-slider-thumb {
   }
 
   h1 {
-    font-size: 2.25rem;
+    font-size: 2.25rem !important;
   }
   h2 {
     font-size: 1.75rem;
   }
+  h3 {
+    font-size: 1.4rem;
+  }
   p,
   span {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   /* .clothes-card {
     width: 100%;
@@ -388,3 +400,32 @@ input[type="range"]::-webkit-slider-thumb {
     width: 50%;
   }
 }
+
+/* 뒤로가기버튼 + 타이틀 */
+/* .app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.right-space {
+  width: 100px;
+} */
+
+/* 뒤로가기버튼 */
+/* .back-button {
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: #e5e5e5;
+  transform: translateX(-3px);
+} */
