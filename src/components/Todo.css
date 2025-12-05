@@ -233,7 +233,14 @@
 }
 
 /* 체크박스 */
-.checkbox-wrapper input[type="checkbox"] {
+.todo-item .checkbox-col,
+.todo-item .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-item .checkbox-wrapper input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 0;
@@ -242,23 +249,12 @@
   opacity: 0;
 }
 
-.custom-checkbox {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--border-color);
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.checkbox-wrapper input:checked + .custom-checkbox {
+.todo-item .checkbox-wrapper input:checked + .custom-checkbox {
   background-color: var(--border-color);
   border-color: var(--border-color);
 }
 
-.checkbox-wrapper input:checked + .custom-checkbox::after {
+.todo-item .checkbox-wrapper input:checked + .custom-checkbox::after {
   content: "✔";
   color: white;
   font-size: 14px;
@@ -268,7 +264,17 @@
   transform: translate(-50%, -52%);
 }
 
-.custom-checkbox:hover {
+.todo-item .custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.todo-item .custom-checkbox:hover {
   border-color: #6f8cff;
 }
 
