@@ -139,7 +139,7 @@ export default function ToEat() {
 
   return (
     <div className="ToEat">
-      <h1>🍽️ 오늘 뭐 먹지?</h1>
+      <h1 className="title">🍽️ 오늘 뭐 먹지?</h1>
 
       {loading && <p>⏳ 검색 중...</p>}
       {error && <p>{error}</p>}
@@ -178,7 +178,8 @@ export default function ToEat() {
                   onClick={() => moveMarker(place)}
                   style={{ cursor: "pointer" }}
                 >
-                  <strong>{place.place_name}</strong>
+                  {/* <h2 className="subtitle">{place.place_name}</h2> */}
+                  <strong className="place-name">{place.place_name}</strong>
                   <p>{place.road_address_name || place.address_name}</p>
                   {place.phone && <p>📞 {place.phone}</p>}
                 </li>
