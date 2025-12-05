@@ -36,7 +36,10 @@ export default function TodoItem({
   return (
     <div className="todo-item">
       <div className="checkbox-col">
-        <input type="checkbox" checked={isDone} onChange={onChangeCheckBox} />
+        <label className="checkbox-wrapper">
+          <input type="checkbox" checked={isDone} onChange={onChangeCheckBox} />
+          <span className="custom-checkbox"></span>
+        </label>
       </div>
 
       {!isEdit ? (
