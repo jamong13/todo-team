@@ -79,7 +79,7 @@ export default function ToEat() {
     try {
       setError("");
       setLoading(true);
-      setRecommendations([]);
+      // setRecommendations([]);
 
       const query = `${selectedLocation} ${selectedCategory}`;
       const res = await axios.get(KAKAO_URL, {
@@ -90,6 +90,7 @@ export default function ToEat() {
       const places = res.data.documents;
       if (places.length === 0) {
         setError("검색 결과가 없습니다 😢");
+        // setRecommendations([]);
         return;
       }
 
@@ -141,9 +142,6 @@ export default function ToEat() {
     <div className="ToEat">
       <h1 className="title">🍽️ 오늘 뭐 먹지?</h1>
 
-      {loading && <p>⏳ 검색 중...</p>}
-      {error && <p>{error}</p>}
-
       <div className="ToEat-container">
         <div>
           <div className="custom-input-wrapper">
@@ -171,6 +169,10 @@ export default function ToEat() {
             <button onClick={() => handleRecommend("디저트")}>디저트</button>
           </div>
           <ul>
+            {/* {loading && (
+              <div className="status-message loading">⏳ 검색 중...</div>
+            )}
+            {error && <div className="status-message error">{error}</div>} */}
             {recommendations.length > 0 ? (
               recommendations.map((place, idx) => (
                 <li
@@ -190,6 +192,11 @@ export default function ToEat() {
                 보여드릴게요.
               </div>
             )}
+            ({" "}
+            {loading && (
+              <div className="status-message loading">⏳ 검색 중...</div>
+            )}
+            {error && <div className="status-message error">{error}</div>})
           </ul>
         </div>
         <div

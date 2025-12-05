@@ -224,10 +224,12 @@
 /* 로딩 / 에러 */
 .loading {
   color: #60a5fa;
+  text-align: center;
 }
 .error {
   color: #f87171;
   font-weight: 600;
+  text-align: center;
 }
 
 /* 맛집 리스트 */
@@ -417,7 +419,7 @@
     font-size: 1.75rem;
   }
 }
-@media (max-width: 300px) {
+@media (max-width: 320px) {
   .ToEat .title {
     font-size: 1.75rem;
   }
