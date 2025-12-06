@@ -5,12 +5,9 @@
   left: 0;
   right: 0;
   width: 100%;
-  padding: 0px 20px;
-  margin: 0 auto;
-  max-width: 1200px;
   z-index: 50;
-  /* border-bottom: 2px solid var(--border-color);  */
-  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--border-color);
+  /backdrop-filter: blur(10px);
 }
 .header-container {
   width: 100%;
