@@ -22,57 +22,26 @@
   font-weight: demi-light;
 }
 
-:root {
-  /* --title: #222;
-  --sub-title: #333;
-  --sub-text: #666; */
-
-  --card-bg: #ffffff;
-  --card-hover: #f5f5f5;
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --card-hover-shadow: rgba(0, 0, 0, 0.15);
+@media (max-width: 1240px) {
+  .title {
+    font-size: 2.25rem;
+  }
+  .subtitle {
+    font-size: 1.75rem;
+  }
 }
 
-/* 메뉴 전체 레이아웃 */
-.menu-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 메뉴 카드 그리드 */
-.menu-grid {
-  display: grid;
-  gap: 20px;
-  width: 100%;
-  max-width: 800px;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-/* 개별 메뉴 카드 */
-.menu-card {
-  text-decoration: none;
-  background: var(--card-bg);
-  border-radius: 15px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 10px var(--card-shadow);
-  transition: all 0.2s ease;
-}
-
-.menu-card:hover {
-  background: var(--card-hover);
-  box-shadow: 0 6px 14px var(--card-hover-shadow);
-  transform: translateY(-4px);
-}
-
-/* 카드 내부 */
-.menu-card-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.menu-emoji {
-  font-size: 3rem;
-  margin-bottom: 10px;
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+  .subtitle {
+    font-size: 1.4rem;
+  }
+  body {
+    font-size: 0.9rem;
+  }
+  .subtext {
+    font-size: 0.8rem;
+  }
 }

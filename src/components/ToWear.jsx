@@ -282,7 +282,7 @@ export default function ToWear() {
   };
 
   return (
-    <div className="container">
+    <div className="containertowear">
       <div className="app-header">
         {/* <div className="back-button" onClick={() => navigate("/")}>
           ←
