@@ -5,6 +5,7 @@ import ToDo from "./components/Todo";
 import ToWear from "./components/ToWear";
 import ToEat from "./components/ToEat";
 import ToWatch from "./components/ToWatch";
+import Home from "./homepage/Home";
 import "./App.css";
 
 export default function App() {
@@ -13,7 +14,7 @@ export default function App() {
       <Header />
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<ToWear />} />
+          <Route path="/" element={<Home />} />
           <Route path="/todo" element={<ToDo />} />
           <Route path="/towear" element={<ToWear />} />
           <Route path="/toeat" element={<ToEat />} />

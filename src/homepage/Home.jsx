@@ -1,0 +1,70 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import "./Home.css";
+
+export default function Home() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const weekdays = [
+      "일요일",
+      "월요일",
+      "화요일",
+      "수요일",
+      "목요일",
+      "금요일",
+      "토요일",
+    ];
+    const weekday = weekdays[date.getDay()];
+    return `${year}년 ${month}월 ${day}일 ${weekday}`;
+  };
+
+  const formatTime = (date) => {
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `오후 ${hours}:${minutes}:${seconds}`;
+  };
+  return (
+    <div className="app">
+      {/* Main Content */}
+      <main className="container main-content">
+        {/* Cat Background Image */}
+        <div className="cat-background" />
+
+        {/* Title */}
+        <div className="page-title">
+          <h2>오늘의 모든 것</h2>
+        </div>
+
+        {/* Date and Time Display */}
+        <div className="datetime-box">
+          <p>
+            {formatDate(currentTime)} {formatTime(currentTime)}
+          </p>
+        </div>
+
+        {/* Sections Layout */}
+        <div className="sections-layout">
+          <div className="left-column">
+            <div id="todo-section"></div>
+            <div id="outfit-section"></div>
+          </div>
+
+          <div className="right-column">
+            <div id="movie-section"></div>
+            <div id="food-section"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
