@@ -1,6 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import ToWearSection from "./ToWearSection";
+import ToEatSection from "./ToEatSection";
+import ToWatchSection from "./ToWatchSection";
+import TodoSection from "./TodoSection";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -37,9 +42,6 @@ export default function Home() {
     <div className="app">
       {/* Main Content */}
       <main className="container main-content">
-        {/* Cat Background Image */}
-        <div className="cat-background" />
-
         {/* Title */}
         <div className="page-title">
           <h2>오늘의 모든 것</h2>
@@ -55,13 +57,29 @@ export default function Home() {
         {/* Sections Layout */}
         <div className="sections-layout">
           <div className="left-column">
-            <div id="todo-section"></div>
-            <div id="outfit-section"></div>
+            <Link to="/todo">
+              <div className="card todo-section">
+                <TodoSection />
+              </div>
+            </Link>
+            <Link to="/towear">
+              <div className="card towear-section">
+                <ToWearSection />
+              </div>
+            </Link>
           </div>
 
           <div className="right-column">
-            <div id="movie-section"></div>
-            <div id="food-section"></div>
+            <Link to="/towatch">
+              <div className="card towatch-section">
+                <ToWatchSection />
+              </div>
+            </Link>
+            <Link to="/toeat">
+              <div className="card toeat-section">
+                <ToEatSection />
+              </div>
+            </Link>
           </div>
         </div>
       </main>
