@@ -26,6 +26,11 @@ export default function TodoItem({
   const onClickEdit = () => {
     setIsEdit(true);
   };
+  const onEditKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSave();
+    }
+  };
 
   const onSave = () => {
     if (editContent.trim() === "") return;
@@ -65,6 +70,7 @@ export default function TodoItem({
             className="edit-input"
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
+            onKeyDown={onEditKeyDown}
           />
 
           <input
@@ -72,6 +78,7 @@ export default function TodoItem({
             type="date"
             value={editDate}
             onChange={(e) => setEditDate(e.target.value)}
+            onKeyDown={onEditKeyDown}
           />
 
           <div className="btn-col">

@@ -142,6 +142,62 @@ span {
   transform: translateY(-4px); /* 살짝 위로 띄우기 */
 }
 /* todo-section 작업 */
+.home-todo-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-todo-section .todo-card {
+  background: #fff;
+  border: 2px solid #f3b9d3;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.2s;
+}
+
+.home-todo-section .todo-card.done {
+  background: #ffeaf3;
+  border-color: #f0a2c5;
+}
+
+.home-todo-section .todo-text {
+  font-size: 16px;
+}
+
+.home-todo-section .todo-text.done {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.home-todo-section .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.home-todo-section .custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #f0a2c5;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.home-todo-section input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #f58fc7;
+}
+
+.home-todo-section .checkbox-wrapper input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
 
 /* outfit-section 작업 */
 
