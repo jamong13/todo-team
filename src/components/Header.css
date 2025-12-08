@@ -80,6 +80,7 @@
   padding: 20px;
   border-top: 2px solid var(--border-color);
   animation: slideDown 0.3s ease-out;
+  background-color: #fff;
 }
 
 .mobile-nav-items {
