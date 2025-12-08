@@ -154,6 +154,16 @@ export default function ToEat() {
             />
             <button onClick={handleAddLocation}>추가</button>
           </div>
+
+          {/* 지역 입력한 게 옆에 뜸 */}
+
+          {selectedLocation && (
+            <div className="selected-location-display">
+              지역: {selectedLocation}
+            </div>
+          )}
+          {/*  */}
+
           <div className="category-buttons-wrapper">
             <button onClick={() => handleRecommend("한식")}>한식</button>
             <button onClick={() => handleRecommend("중식")}>중식</button>
@@ -169,10 +179,10 @@ export default function ToEat() {
             <button onClick={() => handleRecommend("디저트")}>디저트</button>
           </div>
           <ul>
-            {/* {loading && (
+            {loading && (
               <div className="status-message loading">⏳ 검색 중...</div>
             )}
-            {error && <div className="status-message error">{error}</div>} */}
+            {error && <div className="status-message error">{error}</div>}
             {recommendations.length > 0 ? (
               recommendations.map((place, idx) => (
                 <li
@@ -192,11 +202,11 @@ export default function ToEat() {
                 보여드릴게요.
               </div>
             )}
-            ({" "}
+            {/* ({" "}
             {loading && (
               <div className="status-message loading">⏳ 검색 중...</div>
             )}
-            {error && <div className="status-message error">{error}</div>})
+            {error && <div className="status-message error">{error}</div>}) */}
           </ul>
         </div>
         <div
