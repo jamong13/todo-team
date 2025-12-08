@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import ToWearSection from "./ToWearSection";
+import ToWearSection from "./ToWearSection";
 import ToEatSection from "./ToEatSection";
-// import ToWatchSection from "./ToWatchSection";
-// import TodoSection from "./TodoSection";
+import ToWatchSection from "./ToWatchSection";
+import TodoSection from "./TodoSection";
 import "./Home.css";
 import { Link } from "react-router-dom";
 

@@ -1,0 +1,68 @@
+.recommender-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  /* margin: 10px auto; */
+  /* max-width: 400px; */
+  background-color: #fdffbc;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Jua", sans-serif;
+}
+
+.recommender-title {
+  color: #555879;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.recommendation-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 90%;
+}
+
+.label {
+  font-size: 1em;
+  color: var(--sub-text);
+  margin-bottom: 10px;
+}
+
+.food-result {
+  font-size: 2rem;
+  /* font-weight: 900; */
+  color: #555879;
+  /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
+  font-family: jua;
+}
+
+/* --- 버튼 스타일 --- */
+
+.f5-button {
+  /* 기본 모양 */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white; /* 텍스트 색상 */
+  background-color: #8ca9ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  /* 그림자 및 전환 효과 */
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+/* 마우스 오버 시 효과 (Hover) */
+.f5-button:hover {
+  background-color: #6f92fc;
+}

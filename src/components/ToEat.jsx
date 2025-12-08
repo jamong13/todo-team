@@ -140,11 +140,17 @@ export default function ToEat() {
 
   return (
     <div className="ToEat">
-      <h1 className="title">🍽️ 오늘 뭐 먹지?</h1>
+      <h1 className="title">오늘 뭐 먹지?</h1>
 
       <div className="ToEat-container">
         <div>
-          <div className="custom-input-wrapper">
+          <form
+            className="custom-input-wrapper"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleAddLocation();
+            }}
+          >
             <input
               className="custom-input"
               value={inputLocation}
@@ -152,8 +158,8 @@ export default function ToEat() {
               placeholder="지역 입력"
               style={{ marginRight: "0.5rem" }}
             />
-            <button onClick={handleAddLocation}>추가</button>
-          </div>
+            <button type="submit">추가</button>
+          </form>
 
           {/* 지역 입력한 게 옆에 뜸 */}
 

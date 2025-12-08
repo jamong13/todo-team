@@ -27,11 +27,12 @@
 }
 
 /* 제목 */
-.ToEat .title {
+.ToEat > .title {
   font-size: 3rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 1.25rem;
+  margin-top: 48px;
   color: var(--title);
 }
 
