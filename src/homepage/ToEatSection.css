@@ -66,3 +66,49 @@
 .f5-button:hover {
   background-color: #6f92fc;
 }
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .recommender-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* 태블릿PC */
+@media (max-width: 768px) {
+  .recommender-title {
+    font-size: 2.25rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  .f5-button {
+    font-size: 0.8rem;
+  }
+}
+
+/* 📱 모바일 */
+@media (min-width: 320px) and (max-width: 600px) {
+  .recommender-title {
+    font-size: 1.75rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  .f5-button {
+    font-size: 0.8rem;
+  }
+}
+
+/* 320px */
+@media (max-width: 320px) {
+  .recommender-title {
+    font-size: 1.75rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  .f5-button {
+    font-size: 0.8rem;
+  }
+}
