@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ToEatSection.css"; // CSS 파일을 불러옵니다.
+import { BiDish } from "react-icons/bi";
 
 const FOOD_CATEGORIES = [
   "한식",
@@ -32,7 +33,12 @@ export default function ToEatSection() {
 
   return (
     <div className="toeatsection-container">
-      <h2 className="recommender-title subtitle">오늘 뭐 먹지?</h2>
+      <div className="toeat-header">
+        <div className="toeat-icon">
+          <BiDish size={24} color="#5D688A" />
+        </div>
+        <h2 className="recommender-title subtitle">오늘 뭐 먹지?</h2>
+      </div>
       <div className="recommender-container">
         {/* 랜덤 추천 결과 출력 */}
         <div className="recommendation-output">
