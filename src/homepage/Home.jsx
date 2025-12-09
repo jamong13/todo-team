@@ -62,17 +62,17 @@ export default function Home({ todoList }) {
                 <TodoSection todoList={todoList} />
               </div>
             </Link>
-            <Link to="/towear">
-              <div className="card towear-section">
-                <ToWearSection />
+            <Link to="/towatch">
+              <div className="card towatch-section">
+                <ToWatchSection />
               </div>
             </Link>
           </div>
 
           <div className="right-column">
-            <Link to="/towatch">
-              <div className="card towatch-section">
-                <ToWatchSection />
+            <Link to="/towear">
+              <div className="card towear-section">
+                <ToWearSection />
               </div>
             </Link>
             <Link to="/toeat">
