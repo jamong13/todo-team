@@ -1,4 +1,5 @@
 import getTodayTodo from "../components/TodoContent/getTodayTodo.js";
+import "./todoSection.css";
 
 export default function TodoSection() {
   const stored = JSON.parse(localStorage.getItem("todoList")) || [];
