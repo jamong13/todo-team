@@ -288,7 +288,7 @@ export default function ToWear() {
           {/* <div className="back-button" onClick={() => navigate("/")}>
           ←
         </div> */}
-          <h1 className="title">오늘의 옷 추천</h1>
+          <h1 className="title">오늘 뭐 입지?</h1>
           <div className="right-space"></div>
         </div>
         <div className="weather-wrapper">

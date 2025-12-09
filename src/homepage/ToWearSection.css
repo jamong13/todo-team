@@ -37,6 +37,7 @@ span {
 .towear-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px;
   gap: 12px;
 }
@@ -50,10 +51,6 @@ span {
   align-items: center;
   justify-content: center;
   box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
-}
-
-.towear-header h3 {
-  font-size: 22px;
 }
 
 .card-title {
@@ -148,5 +145,11 @@ span {
 @media (max-width: 500px) {
   .towear-container {
     flex-direction: column; /* 세로 정렬 */
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.75rem !important;
   }
 }
