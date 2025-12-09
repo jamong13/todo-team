@@ -62,7 +62,7 @@ export default function ToWearSection() {
         <div className="towear-icon">
           <TbShirt size={24} color="white" />
         </div>
-        <h3>오늘 뭐 입지?</h3>
+        <h2>오늘 뭐 입지?</h2>
       </div>
 
       <div className="towear-container">
