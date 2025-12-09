@@ -41,19 +41,19 @@ span {
 
 /* ToWear.css */
 .towearwrapper {
-  height: 100vh;
+  padding-top: 60px;
   background: linear-gradient(to bottom, #e2fce2, #d3f5d3, #c3fcc3);
 }
 
 .containertowear {
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 0px auto;
   padding: 20px;
   /* border-radius: 12px;
   background: #ffffff;
   border: 1px solid #e2e2e2; */
   text-align: center;
-  background: linear-gradient(to bottom, #e2fce2, #dafdda, #d3f5d3);
+  /* background: linear-gradient(to bottom, #e2fce2, #dafdda, #d3f5d3); */
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
 }
 

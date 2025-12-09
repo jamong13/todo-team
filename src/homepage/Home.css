@@ -1,8 +1,8 @@
 /* 전체 배경 */
 .app {
   min-height: 100vh;
-  padding: 0 20px 20px;
-  margin: 60px auto;
+  padding: 60px 20px 20px;
+  margin: 0px auto;
   background: linear-gradient(to bottom right, #ffc0cb, #f0e6ff, #cce0ff);
   font-family: "Noto Sans KR", sans-serif;
 }
