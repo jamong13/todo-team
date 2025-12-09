@@ -28,7 +28,7 @@ export default function ToWatch() {
   // 영화 데이터 불러오기
   async function fetchMovies(genreId) {
     try {
-      const page = Math.floor(Math.random() * 10 + 1); //랜덤 페이지 번호 (1~10 페이지의 있는 영화를 불러오기 위해)
+      const page = Math.floor(Math.random() * 20 + 1); //랜덤 페이지 번호 (1~20 페이지의 있는 영화를 불러오기 위해)
       // 장르별 API URL 0이면 전체
       const url =
         genreId === 0

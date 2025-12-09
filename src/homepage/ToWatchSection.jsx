@@ -11,7 +11,7 @@ export default function ToWatchSection() {
   // 랜덤 영화 불러오기
   async function fetchRandomMovie() {
     try {
-      const page = Math.floor(Math.random() * 10 + 1);
+      const page = Math.floor(Math.random() * 20 + 1);
       const url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=ko-KR&page=${page}`;
       const res = await axios.get(url);
       const randomMovie =
