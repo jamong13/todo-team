@@ -7,7 +7,7 @@ import TodoSection from "./TodoSection";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ todoList }) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Home() {
           <div className="left-column">
             <Link to="/todo">
               <div className="card todo-section">
-                <TodoSection />
+                <TodoSection todoList={todoList} />
               </div>
             </Link>
             <Link to="/towear">

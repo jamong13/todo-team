@@ -4,18 +4,13 @@ import React, {
   useCallback,
   useState,
   useMemo,
+  useEffect,
 } from "react";
 import "./Todo.css";
 import TodoInput from "./TodoContent/TodoInput";
 import TodoSearch from "./TodoContent/TodoSearch";
 import TodoList from "./TodoContent/TodoList";
-
-const mockTodo = [
-  { id: 0, isDone: true, content: "아침 운동하기", date: "2025-12-01" },
-  { id: 1, isDone: false, content: "영양제 먹기", date: "2025-12-01" },
-  { id: 2, isDone: false, content: "장 보기", date: "2025-12-01" },
-  { id: 3, isDone: false, content: "영양제 먹기", date: "2025-12-02" },
-];
+import { mockTodo } from "./TodoContent/mockTodo.js";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,7 +34,12 @@ function reducer(state, action) {
 }
 
 export default function Todo() {
-  const [todo, dispatch] = useReducer(reducer, mockTodo);
+  const stored = JSON.parse(localStorage.getItem("todoList")) || mockTodo;
+  const [todo, dispatch] = useReducer(reducer, stored);
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todo));
+  }, [todo]);
+
   const idRef = useRef(4);
 
   const [searchDate, setSearchDate] = useState("");
