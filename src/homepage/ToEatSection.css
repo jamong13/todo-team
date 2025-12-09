@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 2rem;
   /* margin: 10px auto; */
   /* max-width: 400px; */
   background-color: #fdffbc;
@@ -14,7 +14,7 @@
 
 .recommender-title {
   color: #555879;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-size: 2rem;
 }
 
@@ -26,18 +26,18 @@
   padding: 20px;
   border: 2px solid #ddd;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
   width: 90%;
 }
 
 .label {
   font-size: 1em;
   color: var(--sub-text);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .food-result {
-  font-size: 2rem;
+  font-size: 1.5rem;
   /* font-weight: 900; */
   color: #555879;
   /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
@@ -48,16 +48,15 @@
 
 .f5-button {
   /* 기본 모양 */
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-size: 1rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: white; /* 텍스트 색상 */
   background-color: #8ca9ff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
   /* 그림자 및 전환 효과 */
   transition: background-color 0.3s ease, transform 0.15s ease;
 }
@@ -70,20 +69,23 @@
 /* 반응형 */
 @media (max-width: 900px) {
   .recommender-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 }
 
 /* 태블릿PC */
 @media (max-width: 768px) {
   .recommender-title {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
   }
   .label {
     font-size: 0.9rem;
   }
   .f5-button {
     font-size: 0.8rem;
+  }
+  .recommender-container {
+    padding: 1.5rem;
   }
 }
 
@@ -105,6 +107,7 @@
   .recommender-title {
     font-size: 1.75rem;
   }
+  .food-result,
   .label {
     font-size: 0.9rem;
   }

@@ -31,18 +31,19 @@ export default function ToEatSection() {
   };
 
   return (
-    <div className="recommender-container">
-      <h1 className="recommender-title">오늘은 뭘 먹을까?</h1>
-
-      {/* 랜덤 추천 결과 출력 */}
-      <div className="recommendation-output">
-        <span className="label">추천 메뉴:</span>
-        {/* State를 사용하지 않고 바로 계산된 값을 사용합니다. */}
-        <span className="food-result">{recommendation}</span>
+    <div className="toeatsection-container">
+      <h2 className="recommender-title subtitle">오늘 뭐 먹지?</h2>
+      <div className="recommender-container">
+        {/* 랜덤 추천 결과 출력 */}
+        <div className="recommendation-output">
+          <span className="label">추천 메뉴:</span>
+          {/* State를 사용하지 않고 바로 계산된 값을 사용합니다. */}
+          <span className="food-result">{recommendation}</span>
+        </div>
+        <button onClick={handleRefresh} className="f5-button" type="button">
+          다른 메뉴 추천 받기
+        </button>
       </div>
-      <button onClick={handleRefresh} className="f5-button" type="button">
-        다른 메뉴 추천 받기
-      </button>
     </div>
   );
 }
