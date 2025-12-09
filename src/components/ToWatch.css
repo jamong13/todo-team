@@ -1,0 +1,616 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #c9e4ff;
+}
+#towatch {
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 20px; /* 20px를 안주면 너무 딱붙은 느낌이 들어서 40px를 줌*/
+  background-color: #c9e4ff;
+}
+header {
+  height: 60px;
+}
+
+.towatch-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.towatch-container h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 20px;
+  color: var(--title);
+  text-align: center;
+}
+.towatch-container h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--sub-title);
+  text-align: left;
+}
+
+.genre-buttons {
+  margin-top: -50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  gap: 20px;
+}
+
+.genre-buttons button {
+  background-color: #fff;
+  color: var(--sub-title);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.genre-buttons button:hover {
+  background-color: #c9e4ff;
+  transform: translateY(-2px);
+}
+
+.genre-buttons button.active {
+  background-color: #8ca9ff;
+  color: #fff;
+}
+
+.movie-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+.movie-card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 366px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 420px;
+
+  object-fit: fill;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.movie-card h3 {
+  font-family: "Noto Sans KR";
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  /* margin-bottom: 6px; */
+}
+
+.movie-card p {
+  font-size: 1rem;
+  color: #f5c518;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 모달 */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 800px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.modal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.modal-info h2 {
+  font-family: "Noto Sans KR";
+  font-weight: 600;
+  max-width: 420px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.modal-rating {
+  color: #f5c518;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.modal-overview {
+  font-size: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 태블릿 */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  #towatch {
+    padding: 0;
+    /* 데스크톱에 패딩을 줘서 태블릿부턴 패딩0으로 바닥간격 없엠. 대신 이미지 크기를 줄여
+    아래의 공간도 카드의 gap만큼 보이게 만듦 */
+  }
+
+  .towatch-container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .towatch-container h1 {
+    font-size: 2.25rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-style: normal;
+    margin-bottom: 20px;
+    color: var(--title);
+  }
+  .towatch-container h2 {
+    font-size: 1.75rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--sub-title);
+    text-align: left;
+  }
+
+  .genre-buttons {
+    margin-top: -50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    gap: 5px;
+    /* 버튼 gap을 20으로 줄경우 간격이 너무 넒고 768px 가기전에 이미 오늘의 추천
+    텍스트를 침범해 5px로 변경 */
+  }
+
+  .genre-buttons button {
+    background-color: #fff;
+    color: var(--sub-title);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 1rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .movie-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 380px; /*영화 제목이 너무 길면 스크롤이 생김*/
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: 275px; /*데스크톱 420px*/
+    object-fit: fill;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    /* 데스크톱 페이지에 적용한 20px를 적용하면 간격이 매우 넓어 보여 15px로 조정 */
+  }
+
+  .modal-content {
+    background: #fff;
+    border-radius: 16px;
+    /* max-width: 800px; */
+    max-width: 650px;
+    /* 800px로 할경우 너무 모달화면이 넒어보여 650px로 조정*/
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* 데스크톱 margin-bottom:20px; */
+  .modal-info h2 {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    max-width: 250px; /*데스크톱 400px*/
+  }
+
+  .modal-rating {
+    color: #f5c518;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+/* 모바일 */
+
+@media (max-width: 768px) and (min-width: 460px) {
+  #towatch {
+    padding: 0;
+  }
+
+  .towatch-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .towatch-container h1 {
+    font-size: 1.75rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--title);
+  }
+
+  .towatch-container h2 {
+    margin-top: 100px; /* 데스크톱*태블릿 margin-top X*/
+    font-size: 1.4rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--sub-title);
+    text-align: center;
+  }
+
+  .genre-buttons {
+    margin-top: -130px;
+    display: grid;
+    grid-template-rows: repeat(2, auto); /* 두 줄 고정 */
+    grid-auto-flow: column; /*→ 행 먼저 채우기 */
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .genre-buttons button {
+    min-width: 80px;
+    padding: 6px 8px;
+  }
+  .movie-grid {
+    margin-top: 60px;
+    /* 데스크톱&태블릿 20px */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    /* 태블릿 20px */
+    justify-items: center;
+  }
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 260x; /*영화 제목이 너무 길면 스크롤이 생김*/
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: 200px; /*태블릿 275px*/
+    object-fit: fill;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    /* 태블릿에 적용한 10px를 적용하면 간격이 매우 넓어 보여 10px로 조정 */
+  }
+
+  .movie-card h3 {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .movie-card p {
+    font-size: 0.9rem;
+    color: #f5c518;
+    text-align: center;
+    margin-bottom: 10px;
+    /* 데스크톱&태블릿 20px */
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+  }
+
+  .modal-content {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* 데스크톱&태블릿 row */
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    width: 70%; /* 화면의 80%까지만 */
+    max-width: 400px; /* 절대적으로도 제한 */
+    height: auto;
+    margin: 0 auto; /* 중앙 정렬 */
+    display: block;
+  }
+
+  .modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  /* 태블릿 margin-bottom:10px; */
+  .modal-info h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  .modal-rating {
+    color: #f5c518;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .modal-overview {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /*줄거리 6줄까지만 나오게*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    /* 데스크톱*태블릿 top:20px right:20px */
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    /*데스크톱&태블릿 2rem */
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+}
+
+/* 모바일 작은화면 */
+
+@media (max-width: 459px) {
+  #towatch {
+    padding: 0;
+  }
+
+  .towatch-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .towatch-container h1 {
+    font-size: 1.75rem;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--title);
+  }
+
+  .towatch-container h2 {
+    display: none;
+    /* 모바일 기본화면보다 작은 화면이라 기본화면에선 보이기 때문에 빼버림 */
+  }
+  .genre-buttons {
+    margin-top: -20px;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .genre-buttons button {
+    max-width: 85px;
+    padding: 3px 5px;
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .movie-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    justify-items: center;
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: 420px; /*원래 데스크톱 사이즈로 */
+    object-fit: fill;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+
+  .movie-card h3 {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .movie-card p {
+    font-size: 0.9rem;
+    color: #f5c518;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+  }
+
+  .modal-content {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-info h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  .modal-rating {
+    color: #f5c518;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .modal-overview {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+}
