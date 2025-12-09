@@ -136,30 +136,19 @@ export default function ToWear() {
   const [originalLocationDoc, setOriginalLocationDoc] = useState(null);
   const navigate = useNavigate();
 
-  const formatAirQuality = (aqi) => {
-    switch (aqi) {
-      case 1:
-        return "좋음";
-      case 2:
-        return "보통";
-      case 3:
-        return "약간 나쁨";
-      case 4:
-        return "나쁨";
-      case 5:
-        return "매우 나쁨";
-      default:
-        return "-";
-    }
-  };
-
-  const formatUVIndex = (uv) => {
-    if (uv < 3) return "낮음";
-    if (uv < 6) return "보통";
-    if (uv < 8) return "높음";
-    if (uv < 11) return "매우 높음";
-    return "위험";
-  };
+  // 가독성 높은 포맷 함수들
+  const formatAirQuality = (aqi) =>
+    ["좋음", "보통", "약간 나쁨", "나쁨", "매우 나쁨"][aqi - 1] || "-";
+  const formatUVIndex = (uv) =>
+    uv < 3
+      ? "낮음"
+      : uv < 6
+      ? "보통"
+      : uv < 8
+      ? "높음"
+      : uv < 11
+      ? "매우 높음"
+      : "위험";
 
   const formatLocationByWidth = (doc, width) => {
     if (!doc) return "위치 불러오는 중...";
@@ -187,15 +176,11 @@ export default function ToWear() {
     return locationString.trim();
   };
 
+  // 창 크기 변경 감지
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+    const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -204,80 +189,89 @@ export default function ToWear() {
     }
   }, [windowWidth, originalLocationDoc]);
 
+  // ⭐ Promise.all로 네트워크 요청 최적화
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+      const lat = coords.latitude;
+      const lon = coords.longitude;
 
-      // 1. 현재 온도 및 습도
-      const weatherRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=c913076005907aa5d79cd0fdc643b55d`
-      );
-      const weatherData = await weatherRes.json();
-      setTemp(Math.round(weatherData.main.temp));
-      setHumidity(weatherData.main.humidity);
+      try {
+        // -------------------------------
+        // 병렬 요청 → 성능 향상
+        // -------------------------------
+        const [weatherRes, airRes, uvRes, kakaoRes] = await Promise.all([
+          fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=c913076005907aa5d79cd0fdc643b55d`
+          ),
+          fetch(
+            `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
+          ),
+          fetch(
+            `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
+          ),
+          fetch(
+            `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${lon}&y=${lat}`,
+            {
+              headers: {
+                Authorization: `KakaoAK fa404c9f620f1b5af3192f1def32356a`,
+              },
+            }
+          ),
+        ]);
 
-      // 2. 미세먼지
-      const airRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
-      );
-      const airData = await airRes.json();
-      setAirQuality(formatAirQuality(airData.list[0].main.aqi)); // 1~5
+        // -------------------------------
+        // 결과 JSON 파싱도 병렬 처리
+        // -------------------------------
+        const [weatherData, airData, uvData, kakaoData] = await Promise.all([
+          weatherRes.json(),
+          airRes.json(),
+          uvRes.json(),
+          kakaoRes.json(),
+        ]);
 
-      // 3. UV 지수
-      const uvRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=c913076005907aa5d79cd0fdc643b55d`
-      );
-      const uvData = await uvRes.json();
-      setUvIndex(formatUVIndex(uvData.value));
+        // -------------------------------
+        // 데이터 세팅
+        // -------------------------------
+        setTemp(Math.round(weatherData.main.temp));
+        setHumidity(weatherData.main.humidity);
+        setAirQuality(formatAirQuality(airData.list[0].main.aqi)); // 1~5
+        setUvIndex(formatUVIndex(uvData.value));
 
-      const kakaoRes = await fetch(
-        `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${lon}&y=${lat}`,
-        {
-          headers: {
-            Authorization: `KakaoAK fa404c9f620f1b5af3192f1def32356a`,
-          },
+        // 위치 정보
+        const doc = kakaoData.documents?.[0];
+        if (doc) {
+          setOriginalLocationDoc(doc);
+          setLocation(formatLocationByWidth(doc, window.innerWidth));
         }
-      );
-      const kakaoData = await kakaoRes.json();
-      const doc = kakaoData.documents?.[0];
-
-      if (doc) {
-        setOriginalLocationDoc(doc);
-        setLocation(formatLocationByWidth(doc, window.innerWidth));
-      } else {
-        setLocation("위치 정보 없음");
+      } catch (err) {
+        console.error("날씨 정보 로딩 실패:", err);
       }
     });
   }, []);
 
   // 슬라이더 구간별 옷 선택
-  const getClothingIndex = () => {
-    if (sliderValue <= 20) return 0;
-    if (sliderValue <= 40) return 1;
-    if (sliderValue <= 60) return 2;
-    if (sliderValue <= 80) return 3;
-    return 4;
-  };
+  const getClothingIndex = () =>
+    sliderValue <= 20
+      ? 0
+      : sliderValue <= 40
+      ? 1
+      : sliderValue <= 60
+      ? 2
+      : sliderValue <= 80
+      ? 3
+      : 4;
 
   const currentClothes = clothingOptions[getClothingIndex()];
 
   const getGrandientColor = (value) => {
     if (value <= 50) {
       const ratio = value / 50;
-      const r = Math.round(70 + (100 - 70) * ratio);
-      const g = Math.round(100 + (150 - 100) * ratio);
-      const b = Math.round(150 + (150 - 150) * ratio);
-      return `rgb(${r}, ${g}, ${b})`;
+      return `rgb(${70 + 30 * ratio}, ${100 + 50 * ratio}, 150)`;
     } else {
       const ratio = (value - 50) / 50;
-
-      const r = Math.round(100 + (244 - 100) * ratio);
-
-      const g = Math.round(150 + (171 - 150) * ratio);
-
-      const b = Math.round(150 + (93 - 150) * ratio);
-      return `rgb(${r}, ${g}, ${b})`;
+      return `rgb(${100 + 144 * ratio}, ${150 + 21 * ratio}, ${
+        150 - 57 * ratio
+      })`;
     }
   };
 
