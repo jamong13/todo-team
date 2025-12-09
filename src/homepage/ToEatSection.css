@@ -1,9 +1,19 @@
+.toeat-header {
+  /* 추가/수정된 부분 */
+  display: flex;
+  align-items: center;
+  /* 필요한 경우 외부 여백을 추가 */
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .recommender-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 2rem;
   /* margin: 10px auto; */
   /* max-width: 400px; */
   background-color: #fdffbc;
@@ -14,7 +24,6 @@
 
 .recommender-title {
   color: #555879;
-  margin-bottom: 20px;
   font-size: 2rem;
 }
 
@@ -26,18 +35,18 @@
   padding: 20px;
   border: 2px solid #ddd;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
   width: 90%;
 }
 
 .label {
   font-size: 1em;
   color: var(--sub-text);
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .food-result {
-  font-size: 2rem;
+  font-size: 1.5rem;
   /* font-weight: 900; */
   color: #555879;
   /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
@@ -48,16 +57,15 @@
 
 .f5-button {
   /* 기본 모양 */
-  padding: 10px 20px;
+  padding: 10px 15px;
   font-size: 1rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: white; /* 텍스트 색상 */
   background-color: #8ca9ff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
   /* 그림자 및 전환 효과 */
   transition: background-color 0.3s ease, transform 0.15s ease;
 }
@@ -67,23 +75,39 @@
   background-color: #6f92fc;
 }
 
+/* ICON */
+.toeat-icon {
+  width: 38px;
+  height: 38px;
+  background: #fdffbc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
+  margin-right: 10px;
+}
+
 /* 반응형 */
 @media (max-width: 900px) {
   .recommender-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 }
 
 /* 태블릿PC */
 @media (max-width: 768px) {
   .recommender-title {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
   }
   .label {
     font-size: 0.9rem;
   }
   .f5-button {
     font-size: 0.8rem;
+  }
+  .recommender-container {
+    padding: 1.5rem;
   }
 }
 
@@ -105,6 +129,7 @@
   .recommender-title {
     font-size: 1.75rem;
   }
+  .food-result,
   .label {
     font-size: 0.9rem;
   }
