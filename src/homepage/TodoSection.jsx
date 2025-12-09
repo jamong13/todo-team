@@ -1,5 +1,6 @@
 import getTodayTodo from "../components/TodoContent/getTodayTodo.js";
 import "./todoSection.css";
+import { FiCheckSquare } from "react-icons/fi";
 
 export default function TodoSection() {
   const stored = JSON.parse(localStorage.getItem("todoList")) || [];
@@ -13,8 +14,13 @@ export default function TodoSection() {
     window.location.reload();
   };
   return (
-    <div className="home-todo-section">
-      <h3 className="home-todo-title">오늘 뭐 하지?</h3>
+    <section className="home-todo-section">
+      <div className="home-todo-header">
+        <div className="todo-icon">
+          <FiCheckSquare />
+        </div>
+        <h2 className="subtitle">오늘 뭐 하지?</h2>
+      </div>
       {todayTodo.length === 0 ? (
         <p className="empty-msg">오늘 할 일이 없습니다</p>
       ) : (
@@ -42,6 +48,6 @@ export default function TodoSection() {
           </div>
         ))
       )}
-    </div>
+    </section>
   );
 }
