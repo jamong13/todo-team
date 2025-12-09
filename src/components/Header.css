@@ -60,7 +60,7 @@
 
 .mobile-menu-button {
   display: none;
-  padding: 20px;
+  padding: 10px;
   background: none;
   border: none;
   color: var(--title);
@@ -78,7 +78,7 @@
 
 .mobile-nav {
   padding: 20px;
-  border-top: 2px solid var(--border-color);
+  border-top: 0px solid var(--border-color);
   animation: slideDown 0.3s ease-out;
   background-color: #fff;
 }
