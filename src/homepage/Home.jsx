@@ -44,7 +44,7 @@ export default function Home({ todoList }) {
       <main className="container main-content">
         {/* Title */}
         <div className="page-title">
-          <h2>오늘의 모든 것</h2>
+          <h1>오늘의 모든 것</h1>
         </div>
 
         {/* Date and Time Display */}
