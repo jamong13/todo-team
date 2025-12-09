@@ -68,10 +68,8 @@ export default function ToWearSection() {
       <div className="towear-container">
         {/* --- 왼쪽 카드 --- */}
         <div className="towear-leftcard">
-          <p className="card-title">
-            날씨
-            <hr className="towear-line" />
-          </p>
+          <p className="card-title">날씨</p>
+          <hr className="towear-line" />
           <p>
             <ThermometerSun size={15} />{" "}
             {temp !== null ? `${temp}°C` : "날씨 불러오는 중..."}
