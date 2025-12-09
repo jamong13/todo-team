@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { TbMovie } from "react-icons/tb";
 import "./ToWatchSection.css";
 
 const API_KEY = "15e2a5f942912e28e8c5d6b8e9d1c9ce";
@@ -31,7 +32,10 @@ export default function ToWatchSection() {
 
   return (
     <section id="towatch-section" className="towatch-section">
-      <h2 className="section-title">오늘 뭐 보지?</h2>
+      <h2 className="section-title">
+        <TbMovie className="movie-icon" />
+        오늘 뭐 보지?
+      </h2>
 
       {movie ? (
         <div className="movie-display">
