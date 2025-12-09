@@ -1,0 +1,281 @@
+.towatch-section {
+  padding: 10px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.movie-display {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  max-width: 550px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.poster {
+  margin-top: 6px;
+  width: 280px;
+  max-width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 220px;
+  text-align: center;
+  margin-left: 10px;
+  max-height: 280px;
+}
+
+.movie-title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  font-family: "Noto Sans KR";
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-weight: bold;
+  color: #ffb400;
+  margin-bottom: 10px;
+}
+
+.overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.reload-btn {
+  position: absolute;
+  bottom: 40px;
+  font-weight: 600;
+  background-color: #7b9cff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reload-btn:hover {
+  background-color: #5a7ff0;
+}
+
+/* 태블릿 */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .section-title {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+
+  .movie-display {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    /*데스크톱 gap:15px padding:15px*/
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    width: 100%;
+  }
+
+  .poster {
+    margin-top: 6px;
+    width: 100%;
+    height: 300px; /*데스크톱 width:280px*/
+    border-radius: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 190px; /*데스크톱 220px*/
+    max-width: 100%;
+    height: 305px;
+    text-align: center;
+    position: relative;
+  }
+
+  .movie-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: "Noto Sans KR";
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #ffb400;
+    margin-bottom: 10px;
+  }
+  .overview {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .reload-btn {
+    position: absolute;
+    bottom: -25px;
+    font-weight: 600;
+    background-color: #7b9cff;
+    color: white;
+    border: none;
+    padding: 8px 12px; /* 데스크톱 padding 10px 15px*/
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 767px) and (min-width: 460px) {
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .movie-display {
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* 가로에서 세로로 변경 */
+    gap: 0; /*태블릿 10px*/
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .poster {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 5px;
+  }
+
+  .movie-info {
+    width: 90%;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    min-height: 230px;
+  }
+
+  .movie-title {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  .rating {
+    margin-bottom: 5px;
+  }
+
+  .overview {
+    -webkit-line-clamp: 4; /*데스크톱&태블릿 6*/
+  }
+
+  .reload-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    background-color: #7b9cff;
+    color: white;
+    border: none;
+    padding: 8px 6px; /* 태블릿 padding 8px 12px*/
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
+
+@media (max-width: 460px) {
+  .movie-display {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    max-width: 95%;
+    box-sizing: border-box;
+  }
+
+  .poster {
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    margin-bottom: 5px;
+  }
+
+  .movie-info {
+    width: 80%;
+    max-width: 250px;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    min-height: 230px;
+  }
+
+  .movie-title {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  .rating {
+    margin-bottom: 5px;
+  }
+
+  .overview {
+    -webkit-line-clamp: 4;
+  }
+
+  .reload-btn {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    background-color: #7b9cff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 115px;
+    padding: 5px 5px;
+    line-height: 15px;
+    height: 30px;
+  }
+}
