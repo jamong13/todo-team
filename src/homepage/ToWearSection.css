@@ -50,6 +50,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
   box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
 }
 
@@ -148,7 +149,7 @@ span {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1240px) {
   h2 {
     font-size: 1.75rem !important;
   }

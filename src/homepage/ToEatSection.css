@@ -2,6 +2,7 @@
   /* 추가/수정된 부분 */
   display: flex;
   align-items: center;
+  padding: 10px;
   /* 필요한 경우 외부 여백을 추가 */
   margin-bottom: 10px;
   flex-direction: row;
@@ -84,8 +85,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
   box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 /* 반응형 */
