@@ -1,0 +1,561 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.title,
+.subtitle {
+  font-family: "Jua", sans-serif;
+}
+
+.ToEat {
+  /* background: linear-gradient(
+    180deg,
+    #fdffbc 0%,
+    #ffeebb 30%,
+    #ffdcb8 80%,
+    #ffc1b6 100%
+  ); */
+  background-color: #fdffbc;
+  /* 연노랑 */
+  color: var(--sub-text);
+  min-height: 100vh;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 2rem 0 0 0;
+}
+
+/* 제목 */
+.ToEat > .title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  margin-top: 48px;
+  color: var(--title);
+}
+
+/* ✅ 메인 레이아웃을 grid로 변경 */
+.ToEat-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 왼쪽 넓게(추천), 오른쪽 지도 */
+  gap: 2rem;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  align-items: start;
+  min-height: 420px;
+}
+
+.ToEat-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f5f5f5;
+  position: relative;
+}
+/* 스크롤바 */
+.ToEat-container ul::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.ToEat-container ul::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.ToEat-container ul::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.ToEat-container ul li {
+  border: 1px solid /* lightgray; */ var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  margin-left: 2rem;
+  transition: background 0.2s;
+  cursor: pointer;
+  background-color: #fff;
+  /* color: #4b5563; */
+  width: 90%;
+}
+
+.ToEat-container ul li:hover {
+  background: linear-gradient(180deg, #f5f5f5 0%, #eeeeee 100%);
+}
+
+.ToEat-container ul li strong {
+  color: var(--sub-text);
+  font-size: 1rem;
+}
+
+.ToEat-container ul li p {
+  color: var(--sub-text);
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+}
+
+/* 빈 상태 안내 메시지 */
+.empty-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px; /* 이만큼 주지 않으면 초기 로드 시 중앙에 오지 않음 */
+  color: var(--sub-text);
+  font-size: 1rem;
+  text-align: center;
+  /* padding: 1rem; */ /* 일단 패딩은 없앰 */
+  line-height: 1.6;
+}
+
+/* 로딩 / 에러 */
+.loading {
+  color: #60a5fa;
+  text-align: center;
+}
+.error {
+  color: #f87171;
+  font-weight: 600;
+  text-align: center;
+}
+.status-message {
+  text-align: center;
+  margin-top: 2rem;
+  justify-content: center;
+  width: 100%;
+  line-height: 1.6;
+  color: var(--sub-text);
+}
+.status-message.error {
+  position: absolute;
+  top: 3rem;
+}
+
+/* 입력한 지역이 추천버튼 옆에 뜨게 */
+.selected-location-display {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--sub-text);
+  padding-left: 1rem;
+}
+
+/* 왼쪽 추천 영역 */
+.ToEat__left {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  height: fit-container;
+  min-height: 420px;
+}
+
+/* 입력창 */
+.custom-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.custom-input {
+  background: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--sub-text);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+}
+
+.custom-input-wrapper button {
+  background: linear-gradient(135deg, #8ca9ff 0%, #7fa0ff 100%);
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+
+  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(140, 169, 255, 0.18);
+}
+
+.custom-input-wrapper button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(140, 169, 255, 0.24);
+}
+
+.custom-input-wrapper button:active {
+  transform: translateY(-1px) scale(0.996);
+  box-shadow: 0 6px 12px rgba(140, 169, 255, 0.18);
+}
+
+/* 셀렉트 박스 */
+.custom-select-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.custom-select {
+  border: 2px solid #e8d5e8;
+  border-radius: 12px;
+  color: #4b5563;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  margin-right: 1rem;
+  background-image: url("/images/angle-down-solid-full.png");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.7rem;
+  padding-right: 2rem;
+}
+
+.custom-select:focus {
+  outline: none;
+}
+
+.custom-select-wrapper button {
+  border: none;
+  color: white;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.custom-select-wrapper button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(240, 166, 202, 0.4);
+}
+
+/* 추천 버튼 */
+/*  */
+
+/* 맛집 리스트 */
+.ToEat__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
+}
+.ToEat__list::-webkit-scrollbar {
+  width: 6px;
+}
+.ToEat__list::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 3px;
+}
+
+/* ✅ 오른쪽 지도 영역 */
+.ToEat__map {
+  background: #1e293b;
+  border-radius: 16px;
+  border: 1px solid #334155;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  height: 420px; /* 고정 높이 (추천 카드와 맞춤) */
+}
+
+.ToEat__map div {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  /* overflow: hidden; */
+}
+
+.ToEat-container > div:last-child {
+  width: 100%;
+  height: 420px;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* 카테고리 버튼 */
+.category-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.category-buttons-wrapper button {
+  background: #8ca9ff;
+  border: 1px solid rgba(76, 111, 255, 0.15);
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  font-size: 1rem;
+  box-shadow: 0 6px 16px rgba(140, 169, 255, 0.14);
+}
+
+.category-buttons-wrapper button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(140, 169, 255, 0.22);
+}
+
+/* 🔁 반응형: 화면이 작아지면 세로로 */
+@media (max-width: 900px) {
+  .ToEat-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+  .ToEat__map {
+    height: 300px;
+  }
+  .ToEat .title {
+    font-size: 2.25rem;
+  }
+  /* 모바일/태블릿에서 지도를 목록 위로 올림 */
+  .ToEat-container > div:last-child {
+    order: -1;
+    width: 100%;
+  }
+}
+
+/* 태블릿PC */
+@media (max-width: 768px) {
+  .ToEat-container {
+    grid-template-columns: 2fr;
+  }
+  .category-buttons-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .ToEat .title {
+    font-size: 2.25rem;
+  }
+}
+
+/* 📱 모바일 */
+@media (min-width: 320px) and (max-width: 600px) {
+  .ToEat-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  /* 모바일에서 지도를 목록보다 위로 배치 */
+  .ToEat-container > div:last-child {
+    order: -1;
+    width: 100%;
+  }
+
+  /* 맵 크기 조정 */
+  .ToEat__map {
+    height: 260px;
+    padding: 0.4rem;
+  }
+  .ToEat__map div {
+    border-radius: 10px;
+  }
+
+  /* 입력창/추천버튼을 한 줄로 배치 및 중앙 정렬 */
+  .custom-input-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: 95%;
+    margin: 0 auto 1rem auto;
+  }
+  .custom-input {
+    width: 70%;
+    padding: 0.6rem 0.8rem;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .custom-input-wrapper button {
+    width: 30%;
+    padding: 0.6rem 0.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* 카테고리 버튼: 모바일에서 2줄 x 4개(4열) 배치 */
+  .category-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+
+    width: 80%;
+    margin: 1rem auto;
+  }
+  .category-buttons-wrapper button {
+    padding: 0.28rem 0.3rem;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    line-height: 1;
+    font-size: 0.9rem;
+  }
+
+  /* 리스트 여백/높이 조정 */
+  .ToEat-container ul {
+    max-height: 420px;
+    padding-left: 0.5rem;
+    margin-left: 0;
+  }
+
+  .empty-message {
+    height: 180px;
+    padding: 1rem;
+    color: #1e2939;
+    font-size: 0.9rem;
+  }
+
+  .ToEat .title {
+    font-size: 1.75rem;
+  }
+  .status-message.error {
+    top: 0.5rem;
+  }
+  .selected-location-display {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 320px) {
+  .ToEat .title {
+    font-size: 1.75rem;
+  }
+
+  .ToEat-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  /* 모바일에서 지도를 목록보다 위로 배치 */
+  .ToEat-container > div:last-child {
+    order: -1;
+    width: 100%;
+  }
+
+  /* 맵 크기 조정 */
+  .ToEat__map {
+    height: 200px;
+    padding: 0.3rem;
+  }
+  .ToEat__map div {
+    border-radius: 8px;
+  }
+
+  /* 입력창/추천버튼을 한 줄로 배치 및 중앙 정렬 */
+  .custom-input-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    margin: 0 0 0.8rem 0;
+  }
+  .custom-input {
+    width: 65%;
+    padding: 0.5rem 0.6rem;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  .custom-input-wrapper button {
+    width: 35%;
+    padding: 0.5rem 0.4rem;
+    margin: 0;
+    font-size: 0.75rem;
+  }
+
+  /* 카테고리 버튼: 초소형에서 2줄 x 4개(4열) 배치 */
+  .category-buttons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  .category-buttons-wrapper button {
+    padding: 0.2rem 0.2rem;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    line-height: 1;
+    font-size: 0.65rem;
+  }
+
+  /* 리스트 여백/높이 조정 */
+  .ToEat-container ul {
+    max-height: 300px;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .ToEat-container ul li {
+    padding: 0.7rem;
+    margin-bottom: 0.6rem;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .ToEat-container ul li strong {
+    font-size: 0.9rem;
+  }
+
+  .ToEat-container ul li p {
+    font-size: 0.8rem;
+    margin: 0.3rem 0 0 0;
+  }
+
+  .empty-message {
+    height: 120px;
+    padding: 0.8rem;
+    color: #1e2939;
+    font-size: 0.8rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .status-message.error {
+    top: -15px;
+  }
+  .selected-location-display {
+    font-size: 0.8rem;
+  }
+}
