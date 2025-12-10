@@ -1,50 +1,11 @@
-import { useState, useEffect } from "react";
 import { TbShirt } from "react-icons/tb";
+import useWeather from "../hooks/useWeather";
 import { ThermometerSun } from "lucide-react";
+import { convertCondition } from "../utils/formatter";
 import "./ToWearSection.css";
 
 export default function ToWearSection() {
-  const [temp, setTemp] = useState(null);
-  const [condition, setCondition] = useState(null);
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-
-      // 현재 기온만 요청
-      const weatherRes = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=c913076005907aa5d79cd0fdc643b55d`
-      );
-      const weatherData = await weatherRes.json();
-
-      setTemp(Math.round(weatherData.main.temp));
-      setCondition(weatherData.weather[0].main);
-    });
-  }, []);
-
-  const convertCondition = (c) => {
-    switch (c) {
-      case "Clear":
-        return "맑음 ☀️";
-      case "Clouds":
-        return "흐림 ☁️";
-      case "Rain":
-        return "비 🌧️";
-      case "Drizzle":
-        return "이슬비 🌦️";
-      case "Thunderstorm":
-        return "천둥번개 ⛈️";
-      case "Snow":
-        return "눈 ❄️";
-      case "Mist":
-      case "Fog":
-      case "Haze":
-        return "안개 🌫️";
-      default:
-        return "";
-    }
-  };
+  const { temp, weatherCondition } = useWeather();
 
   const getClothes = () => {
     if (typeof temp !== "number") return "옷차림 정보를 불러오는 중...";
@@ -74,7 +35,7 @@ export default function ToWearSection() {
             <ThermometerSun size={15} />{" "}
             {temp !== null ? `${temp}°C` : "날씨 불러오는 중..."}
             {"  "}
-            {convertCondition(condition)}{" "}
+            {convertCondition(weatherCondition)}{" "}
           </p>
           <p className="today-weather">
             {typeof temp === "number"
