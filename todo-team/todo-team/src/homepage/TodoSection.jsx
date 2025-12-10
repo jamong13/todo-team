@@ -1,5 +1,5 @@
 import getTodayTodo from "../components/TodoContent/getTodayTodo.js";
-import "./TodoSection.css";
+import "./todoSection.css";
 import { FiCheckSquare } from "react-icons/fi";
 
 export default function TodoSection() {

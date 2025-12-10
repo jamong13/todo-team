@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap");
+
+ul,
+li {
+  list-style: none;
+}
+
+/* 글꼴 스타일 종합 */
+h1 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 3rem; /* 3rem */
+  color: #5d688a; /* 지정 색상 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
+h2 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 2rem; /* 2rem */
+  color: #555879; /* 지정 색상 */
+  margin: 0;
+}
+
+h3 {
+  font-family: "Jua", sans-serif; /* JUA Regular */
+  font-weight: 400; /* Regular */
+  font-size: 1.75rem;
+  color: #555879; /* 지정 색상 */
+  margin: 0;
+}
+
+p,
+span {
+  font-family: "Noto Sans KR", sans-serif; /* Noto Sans KR Regular */
+  font-weight: 400; /* Regular */
+  font-size: 1rem;
+  color: #1e2939;
+}
+
+/* ToWear.css */
+.towearwrapper {
+  padding-top: 60px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e2fce2, #d3f5d3, #c3fcc3);
+}
+
+.containertowear {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 20px;
+  /* border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2; */
+  text-align: center;
+  /* background: linear-gradient(to bottom, #e2fce2, #dafdda, #d3f5d3); */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+}
+
+.card {
+  padding: 15px;
+  border-radius: 12px;
+  background: #ffffff;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.weather-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.card.temp-card {
+  background: #f3fff2;
+  margin: 20px auto;
+  align-items: center;
+  line-height: 3.2rem;
+  flex: 1;
+  transition: transform 0.3s ease;
+}
+
+.card.temp-card:hover {
+  transform: scale(1.05);
+}
+
+.card.right-card {
+  position: relative;
+  background: #f3fff2;
+  margin: 20px auto;
+  flex: 2;
+  transition: transform 0.3s ease;
+}
+
+.card.right-card:hover {
+  transform: scale(1.03);
+}
+
+.line {
+  margin: 12px 0;
+  border: none;
+  height: 1.5px;
+  background-color: rgb(206, 243, 181);
+}
+
+.right-card .hover-text {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f3fff2;
+  padding: 15px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.right-card:hover .hover-text {
+  display: flex;
+}
+
+.right-card .weather-info,
+.right-card h2 {
+  transition: opacity 0.3s ease;
+}
+
+.right-card:hover .weather-info,
+.right-card:hover h2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.clothes-description {
+  margin-bottom: 15px;
+}
+
+.clothes-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.clothes-card {
+  /* flex: 1 1 calc(20% - 12px); */
+  /* max-width: calc(20% - 12px); */
+  flex: 0 0 200px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  background: linear-gradient(to bottom, #b8e7b8, #bce5bc, #e3f3e3);
+  transition: transform 0.3s ease, box-shadow 0.1s ease;
+}
+
+.clothes-card:hover {
+  background: linear-gradient(to bottom, #70a170, #70a170, #99ce99);
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.clothes-card:hover .card-name {
+  color: rgb(255, 255, 255);
+}
+
+.clothes-card img.clothes-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.slider-box {
+  position: relative;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #f3fff2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px; /* 너무 넓지 않게 제한 */
+  text-align: center;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px; /* 슬라이더와 레이블 간 간격 */
+  color: #333;
+  padding: 0 4px; /* 약간의 여백 */
+}
+
+.slider-label {
+  margin-top: 13px;
+  font-size: 0.9rem;
+}
+
+.button-label {
+  display: none;
+}
+
+/* 슬라이더 */
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  /* background: linear-gradient(to right, #57a0ee, #80e980, #f7a95c); */
+  background: linear-gradient(to right, #a7c7ee, #b3e6b3, #f7d3a7);
+  outline: none;
+  margin: 0; /* 좌우 여백 제거 */
+  display: block;
+}
+
+/* 슬라이더 thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 24px;
+  border-radius: 20%;
+  background: #467546;
+  border: 2px solid #73b671;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+
+  /* 지퍼 느낌 세로줄 */
+  background-image: repeating-linear-gradient(
+    90deg,
+    #73b671 0px,
+    #73b671 3px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+/* input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #888;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  background-image: repeating-linear-gradient(
+    90deg,
+    #888 0px,
+    #888 2px,
+    #fff 2px,
+    #fff 4px
+  );
+} */
+
+/* 반응형 768px 이하일 때*/
+
+@media (max-width: 768px) {
+  .right-card {
+    display: none !important;
+  }
+
+  .temp-card {
+    width: 100%;
+  }
+
+  .clothes-card img,
+  .clothes-image {
+    display: none !important;
+  }
+
+  h1 {
+    font-size: 2.25rem !important;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
+  p,
+  span {
+    font-size: 0.9rem;
+  }
+  /* .clothes-card {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .clothes-cards {
+    display: flex;
+
+    gap: 12px;
+  } */
+}
+
+/* @media (max-width: 767px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  p,
+  span {
+    font-size: 0.875rem;
+  }
+} */
+
+/* 슬라이더 버튼 */
+
+.slider-buttons {
+  display: none;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 15px;
+}
+
+.slider-btn {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.2s;
+
+  display: flex; /* 버튼 내부 콘텐츠를 Flex 컨테이너로 만듭니다. */
+  align-items: center; /* 텍스트와 아이콘을 세로 중앙 정렬합니다. */
+  justify-content: center; /* 버튼 내부 전체 콘텐츠를 가로 중앙 정렬합니다. */
+}
+
+.slider-btn:hover {
+  transform: scale(1.1);
+}
+
+.left-btn {
+  width: 50%;
+  min-width: 50px;
+  background: linear-gradient(to right, #a7c7ee, #b3e6b3);
+}
+
+.left-btn svg {
+  color: gray;
+}
+
+.left-btn:hover svg {
+  color: #3b4b3b;
+}
+
+.right-btn svg {
+  color: gray;
+}
+
+.right-btn:hover svg {
+  color: #3b4b3b;
+}
+
+.right-btn {
+  width: 50%;
+  min-width: 50px;
+  background: linear-gradient(to right, #b3e6b3, #f7d3a7);
+}
+
+@media (max-width: 466px) {
+  input[type="range"] {
+    display: none !important;
+  }
+
+  .slider-buttons {
+    display: flex !important;
+  }
+
+  .slider-labels {
+    display: none !important;
+  }
+
+  .slider-label {
+    display: none !important;
+  }
+
+  .button-label {
+    display: block !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .slider-buttons {
+    align-items: center;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .slider-buttons .slider-btn {
+    width: 50%;
+  }
+}
+
+/* 뒤로가기버튼 + 타이틀 */
+/* .app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.right-space {
+  width: 100px;
+} */
+
+/* 뒤로가기버튼 */
+/* .back-button {
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: #e5e5e5;
+  transform: translateX(-3px);
+} */
