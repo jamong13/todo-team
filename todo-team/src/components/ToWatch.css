@@ -88,23 +88,23 @@ header {
 }
 
 .movie-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .movie-card img {
   width: 90%;
   height: 420px;
-  object-fit: fill;
   display: block;
   margin: 0 auto;
   padding: 20px 0;
+  object-fit: fill;
   border-bottom: 1px solid #ddd;
 }
 
 .movie-card h3 {
   font-family: "Noto Sans KR";
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
   text-align: center;
   /* margin-bottom: 6px; */
@@ -242,9 +242,6 @@ header {
   }
 
   .genre-buttons button {
-    background-color: #fff;
-    color: var(--sub-title);
-    border-radius: 8px;
     padding: 6px 8px;
     font-size: 1rem;
     font-family: "Jua", sans-serif;
@@ -334,7 +331,7 @@ header {
   }
 
   .genre-buttons {
-    margin-top: -130px;
+    margin-top: -145px;
     display: grid;
     grid-template-rows: repeat(2, auto); /* 두 줄 고정 */
     grid-auto-flow: column; /*→ 행 먼저 채우기 */
@@ -348,7 +345,7 @@ header {
     padding: 6px 8px;
   }
   .movie-grid {
-    margin-top: 60px;
+    margin-top: 65px;
     /* 데스크톱&태블릿 20px */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -368,7 +365,7 @@ header {
 
   .movie-card img {
     height: 200px; /*태블릿 275px*/
-    padding: 10px 0; /*데스크톱&모바일 20px 0*/
+    padding: 10px 0; /*데스크톱&태블릿 20px*/
   }
 
   .movie-card h3 {
