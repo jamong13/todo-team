@@ -1,0 +1,156 @@
+ul,
+li {
+  list-style: none;
+}
+
+/* ------------ 공통 글꼴 ------------ */
+h1,
+h2,
+h3 {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  color: #4e5875;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p,
+span {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #1e2939;
+}
+
+/* ------------ 아이콘 헤더 ------------ */
+.towear-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 12px;
+}
+
+.towear-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #6cbf6c, #4fa94f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
+}
+
+.card-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* ------------ 메인 카드 컨테이너 ------------ */
+.towear-container {
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+  line-height: 1.8rem;
+}
+
+/* ------------ 왼쪽 카드 (날씨) ------------ */
+.towear-leftcard {
+  flex: 1;
+  border-radius: 16px;
+  padding: 22px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(214, 245, 214, 0.75),
+    rgba(189, 248, 189, 0.65)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 상태 텍스트 */
+.today-weather {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #3d4c3d;
+  margin-top: 6px;
+}
+
+/* ------------ 오른쪽 카드 (추천 옷차림) ------------ */
+.towear-rightcard {
+  flex: 1;
+  border-radius: 16px;
+  padding: 22px;
+
+  background: #ffffff;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to bottom right, #e2fce2, #d0f4d0, #b8f4b8) 1;
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* "추천 옷차림" 제목 */
+.towear-rightcard p:first-child {
+  font-weight: 500;
+  color: #4b5059;
+}
+
+/* 추천 옷차림 박스 */
+.clothes {
+  background: #f0fdf4;
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: center;
+  margin-top: 10px;
+  border: 1px solid #dcfce7;
+}
+
+.clothes p {
+  color: #22c55e;
+  font-weight: 600;
+  font-family: "Jua", "Noto Sans KR", sans-serif;
+  font-size: 1.05rem;
+}
+
+/* 구분선 */
+.towear-line {
+  margin: 8px 0;
+  border: none;
+  height: 1px;
+  background-color: rgba(80, 80, 80, 0.2);
+}
+
+@media (max-width: 500px) {
+  .towear-container {
+    flex-direction: column; /* 세로 정렬 */
+  }
+}
+
+@media (max-width: 1240px) {
+  h2 {
+    font-size: 1.75rem !important;
+  }
+}
