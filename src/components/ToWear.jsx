@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-// 아이콘
 import { MapPinned, ThermometerSun } from "lucide-react";
 import { IoWaterSharp, IoSunnyOutline } from "react-icons/io5";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import { FiWind } from "react-icons/fi";
-
-// 커스텀 훅 & 유틸
 import useWeather from "../hooks/useWeather";
 import { formatLocationByWidth } from "../utils/formatter";
 import { tempToSlider } from "../utils/tempSlider";
 import { clothingOptions } from "../data/clothingOptions";
 import { getClothingIndex } from "../utils/clothingIndex";
 import { getGradientColor } from "../utils/gradientColor";
-
-// 스타일
 import "./ToWear.css";
 
 export default function ToWear() {
@@ -27,40 +21,33 @@ export default function ToWear() {
   const [location, setLocation] = useState("위치 불러오는 중...");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // 창 크기 감지
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 위치 업데이트
   useEffect(() => {
     if (locationDoc) {
       setLocation(formatLocationByWidth(locationDoc, windowWidth));
     }
   }, [locationDoc, windowWidth]);
 
-  // 온도 기반 초기 슬라이더 값 설정
   useEffect(() => {
     if (typeof temp === "number") {
       setSliderValue(tempToSlider(temp));
     }
   }, [temp]);
 
-  // 현재 선택된 옷 옵션
   const currentClothes = clothingOptions[getClothingIndex(sliderValue)];
 
   return (
     <div className="towearwrapper">
       <div className="containertowear">
-        {/* 헤더 */}
         <div className="app-header">
           <h1 className="title">오늘의 옷 추천</h1>
           <div className="right-space"></div>
         </div>
-
-        {/* 날씨 카드 */}
         <div className="weather-wrapper">
           <div className="card temp-card">
             <h3>
@@ -86,8 +73,6 @@ export default function ToWear() {
                 : "❓"}
             </h3>
           </div>
-
-          {/* 오른쪽 날씨 정보 카드 */}
           <div className="card right-card">
             <h2>오늘 날씨 정보</h2>
             <hr className="line" />
@@ -114,7 +99,6 @@ export default function ToWear() {
                 </p>
               </li>
             </ul>
-
             <div className="hover-text">
               <p>
                 {typeof temp === "number"
@@ -132,13 +116,9 @@ export default function ToWear() {
             </div>
           </div>
         </div>
-
-        {/* 설명 */}
         <div className="clothes-description">
           <h2>{currentClothes.description}</h2>
         </div>
-
-        {/* 옷 카드 */}
         <div className="clothes-cards">
           {currentClothes.items.slice(0, 5).map((item, idx) => (
             <div className="card clothes-card" key={idx}>
@@ -147,8 +127,6 @@ export default function ToWear() {
             </div>
           ))}
         </div>
-
-        {/* 슬라이더 */}
         <div className="slider-box">
           <div className="slider-labels">
             <span>두꺼운 옷</span>
