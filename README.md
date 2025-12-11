@@ -175,3 +175,15 @@ OAuth 로그인 기능
 
 이 프로젝트는 일상을 간편하고 즐겁게 만들기 위해 제작되었습니다.
 날씨·영화·맛집·할 일 등 **"오늘 필요한 모든 것"**을 한곳에서 확인하세요!
+
+
+➕ **Figma 링크**
+
+📝 ToDo
+👉
+👕 ToWear
+👉
+🎬 ToWatch
+👉
+🍽️ ToEat
+👉https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0?node-id=3-2&p=f&t=0jn4SAQXTjrucx2Z-0
