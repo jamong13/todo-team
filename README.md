@@ -1,10 +1,10 @@
-🧩 오늘의 모든 것 (Today’s All-in-One)
+🧩 **오늘의 모든 것 (Today’s All-in-One)**
 
 React 기반으로 제작된 일상 추천 통합 서비스입니다.
 사용자의 위치 · 날씨 · 날짜 · 취향 등을 기반으로
 할 일 / 옷차림 / 영화 / 맛집을 한 화면에서 확인하고 추천받을 수 있습니다.
 
-🚀 주요 기능
+🚀 **주요 기능**
 
 ✅ 1. Todo List
 
@@ -44,7 +44,7 @@ Kakao Map API
 
 주소 / 거리 / 평점 등 상세 정보 표시
 
-🖼️ 메인 화면 구성
+🖼️ **메인 화면 구성**
 
 메인 페이지에서는 아래 4개의 정보를 한눈에 확인할 수 있습니다:
 
@@ -60,9 +60,9 @@ Kakao Map API
 
 각 섹션 클릭 시 해당 기능의 상세 페이지로 이동합니다.
 
-🛠 기술 스택
+🛠 **기술 스택**
 
-Frontend
+**Frontend**
 
 React (CRA)
 
@@ -74,7 +74,7 @@ React Icons
 
 Axios
 
-API
+**API**
 
 OpenWeather API
 
@@ -82,13 +82,15 @@ TMDB API
 
 Kakao Map API
 
-배포
+**배포**
 
 Vercel
 
 vercel.json을 통한 SPA 라우팅 설정
 
-📂 프로젝트 구조
+📂 **프로젝트 구조**
+
+```text
 src/
 ├─ components/
 │  ├─ ToWearSection/
@@ -110,8 +112,10 @@ src/
 │
 ├─ App.js
 └─ index.js
+```
 
-🔧 설치 및 실행 방법
+
+🔧 **설치 및 실행 방법**
 1️⃣ 프로젝트 클론
 git clone https://github.com/your-repo/todays-all.git
 
@@ -121,7 +125,7 @@ npm install
 3️⃣ 실행
 npm start
 
-🔑 환경변수 설정 (.env)
+🔑 **환경변수 설정 (.env)**
 
 프로젝트 루트에 .env 파일을 생성 후 다음 키 추가:
 
@@ -129,7 +133,7 @@ REACT_APP_WEATHER_API_KEY=YOUR_API_KEY
 REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY
 REACT_APP_KAKAO_MAP_KEY=YOUR_KAKAO_KEY
 
-👥 팀 소개
+👥 **팀 소개**
 | 역할    | 이름      | 기여 내용                                       |
 | ----- | ------- | ------------------------------------------- |
 | 🧭 팀장 | **이희수** | • Todo 섹션 개발<br>• 프로젝트 총괄 진행<br>• Header 작성 |
@@ -137,7 +141,7 @@ REACT_APP_KAKAO_MAP_KEY=YOUR_KAKAO_KEY
 | 👤 팀원 | **천다솜** | • ToWatch 섹션 개발<br>• 프로젝트 보조 및 전체 흐름 지원     |
 | 👤 팀원 | **권혜지** | • ToEat 섹션 개발<br>• 프로젝트 보조 및 자료 수집          |
 
-📌 향후 개선 예정
+📌 **향후 개선 예정**
 
 OAuth 로그인 기능
 
@@ -147,7 +151,7 @@ OAuth 로그인 기능
 
 추천 알고리즘 강화
 
-🙌 마치며
+🙌 **마치며**
 
 이 프로젝트는 일상을 간편하고 즐겁게 만들기 위해 제작되었습니다.
 날씨·영화·맛집·할 일 등 **"오늘 필요한 모든 것"**을 한곳에서 확인하세요!
