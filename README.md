@@ -193,4 +193,4 @@ OAuth 로그인 기능
 
 🍽️ ToEat
 
-👉 https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0-ToEat?node-id=53-48&t=FRqSSyf5XtNgXHAk-1
+👉 https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0-ToEat?node-id=3-2&t=0jn4SAQXTjrucx2Z-1
