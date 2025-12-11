@@ -185,12 +185,12 @@ OAuth 로그인 기능
 
 👕 ToWear 
 
-👉
+👉 https://www.figma.com/make/JBrud8g6VLNeBS05YZDfkz/Home-Screen-with-Thumbnails?node-id=0-1&p=f&t=IX4TGF9v5n5LkcYK-0
 
 🎬 ToWatch
 
-👉
+👉 
 
 🍽️ ToEat
 
-👉https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0?node-id=3-2&p=f&t=0jn4SAQXTjrucx2Z-0
+👉 https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0?node-id=3-2&p=f&t=0jn4SAQXTjrucx2Z-0
