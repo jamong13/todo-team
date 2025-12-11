@@ -46,8 +46,6 @@ Kakao Map API
 
 🖼️ **메인 화면 구성**
 
-메인 페이지에서는 아래 4개의 정보를 한눈에 확인할 수 있습니다:
-
 📅 현재 날짜 & 실시간 시간
 
 📝 ToDo
@@ -91,31 +89,53 @@ vercel.json을 통한 SPA 라우팅 설정
 📂 **프로젝트 구조**
 
 ```text
-src/
-├─ components/
-│  ├─ ToWearSection/
-│  ├─ ToEatSection/
-│  ├─ ToWatchSection/
-│  └─ TodoSection/
-│
-├─ hooks/
-│  └─ useWeather.js
-│
-├─ pages/
-│  ├─ Home.js
-│  └─ ...상세 페이지들
-│
-├─ utils/
-│  └─ formatter.js
-│
-├─ styles/
-│
-├─ App.js
-└─ index.js
+todo-team/
+├─ dist/                     # 빌드 결과물 (Vercel 배포용)
+├─ node_modules/            # 설치된 패키지
+├─ public/
+│  └─ index.html            # 초기 HTML 템플릿
+├─ src/
+│  ├─ assets/               # 이미지·정적 리소스
+│  ├─ components/           # 재사용 가능한 UI 컴포넌트
+│  │  ├─ TodoContent/       # Todo 상세 컴포넌트
+│  │  ├─ Header.css
+│  │  ├─ Header.jsx
+│  │  ├─ Todo.css
+│  │  ├─ Todo.jsx
+│  │  ├─ ToEat.css
+│  │  ├─ ToEat.jsx
+│  │  ├─ ToWatch.css
+│  │  ├─ ToWatch.jsx
+│  │  ├─ ToWear.css
+│  │  └─ ToWear.jsx
+│  ├─ homepage/             # Home 화면 관련 구성 요소
+│  │  ├─ Home.css
+│  │  ├─ Home.jsx
+│  │  ├─ TodoSection.css
+│  │  ├─ TodoSection.jsx
+│  │  ├─ ToEatSection.css
+│  │  ├─ ToEatSection.jsx
+│  │  ├─ ToWatchSection.css
+│  │  ├─ ToWatchSection.jsx
+│  │  ├─ ToWearSection.css
+│  │  └─ ToWearSection.jsx
+│  ├─ App.css
+│  ├─ App.jsx               # 전체 라우팅 및 레이아웃
+│  ├─ index.css
+│  └─ main.jsx              # React DOM 진입 파일
+├─ .gitignore
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ vercel.json              # Vercel 배포 설정
+└─ vite.config.js           # Vite 설정 파일
 ```
 
 
 🔧 **설치 및 실행 방법**
+
 1️⃣ 프로젝트 클론
 git clone https://github.com/your-repo/todays-all.git
 
@@ -129,9 +149,9 @@ npm start
 
 프로젝트 루트에 .env 파일을 생성 후 다음 키 추가:
 
-REACT_APP_WEATHER_API_KEY=YOUR_API_KEY
-REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY
-REACT_APP_KAKAO_MAP_KEY=YOUR_KAKAO_KEY
+REACT_APP_WEATHER_API_KEY=YOUR_API_KEY <br>
+REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY <br>
+REACT_APP_KAKAO_MAP_KEY=YOUR_KAKAO_KEY <br>
 
 👥 **팀 소개**
 | 역할    | 이름      | 기여 내용                                       |
