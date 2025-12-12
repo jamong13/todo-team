@@ -157,7 +157,7 @@ todo-team/
 🔧 **설치 및 실행 방법**
 
 1️⃣ 프로젝트 클론
-git clone https://github.com/your-repo/todays-all.git
+git clone https://github.com/jamong13/todo-team
 
 2️⃣ 패키지 설치
 npm install
