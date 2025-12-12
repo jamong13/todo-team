@@ -1,16 +1,216 @@
-# React + Vite
+🧩 **오늘의 모든 것 (Today’s All-in-One)**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 기반으로 제작된 일상 추천 통합 서비스입니다.
+사용자의 위치 · 날씨 · 날짜 · 취향 등을 기반으로
+할 일 / 옷차림 / 영화 / 맛집을 한 화면에서 확인하고 추천받을 수 있습니다.
 
-Currently, two official plugins are available:
+사이트 주소 : https://todo-team2.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 **주요 기능**
 
-## React Compiler
+🏠 1. 오늘의 모든 것(Home)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+홈 화면은 네 가지 기능의 요약(Summary) 섹션으로 구성되어 있습니다.
 
-## Expanding the ESLint configuration
+오늘 뭐 하지? - 해야 할 일 미리보기(체크 가능)
+오늘 뭐 입지? - 오늘의 날씨와 간단하게 옷차림 추천
+오늘 뭐 보지? - 영화 추천
+오늘 뭐 먹지? - 메뉴 추천
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+각 카드는 클릭 시 해당 상세 페이지로 이동 가능합니다.
+
+핵심 UI: 카드 호버, Todo 체크박스 클릭 시 섹션 이동 이벤트 차단, 반응형 UI 구성
+
+홈에서 바로 할 일 체크가 가능하도록 UX를 개선하여
+사용자가 별도 페이지 이동 없이 빠르게 완료 처리를 할 수 있습니다.
+오늘 뭐 보지?와 오늘 뭐 먹지?는 버튼을 클릭해 랜덤한 내용을 받을 수 있습니다.
+
+✅ 2. 오늘 뭐 하지?(Todo)
+
+사용자가 직접 날짜를 선택하여 할 일을 작성하고 관리
+(미선택 시 당일 날짜 자동 입력)
+
+간단한 CRUD 기능
+
+날짜별 할 일 조회 기능
+
+👕 3. 오늘 뭐 입지? (ToWear)
+
+OpenWeather API + Kakao Map API
+
+실시간 위치 기반 날씨 수집
+
+온도/습도/자외선 지수/대기질 분석
+
+AI 스타일 규칙 기반 옷차림 추천 제공
+
+🎬 4. 오늘 뭐 보지? (ToWatch)
+
+TMDB API
+
+인기 영화 / 추천 영화 / 장르 기반 콘텐츠 제공
+
+카드 UI로 영화 포스터·줄거리·평점 표시
+
+상세 페이지 이동 가능
+
+🍽️ 5. 오늘 뭐 먹지? (ToEat)
+
+Kakao Map API + Local Search API
+
+사용자 위치 기반 주변 맛집 검색
+
+카테고리(한식/양식/일식/디저트 등) 필터 제공
+
+주소 / 상호명 / 연락처 등 상세 정보 표시
+
+🖼️ **메인 화면 구성**
+
+📅 현재 날짜 & 실시간 시간
+
+📝 ToDo
+
+👕 ToWear
+
+🎬 ToWatch
+
+🍽️ ToEat
+
+각 섹션 클릭 시 해당 기능의 상세 페이지로 이동합니다.
+
+🛠 **기술 스택**
+
+**Frontend**
+
+React (CRA)
+
+React Router DOM
+
+CSS / Custom Styles
+
+React Icons
+
+Axios
+
+**API**
+
+OpenWeather API
+
+TMDB API
+
+Kakao Map API
+
+**배포**
+
+Vercel
+
+vercel.json을 통한 SPA 라우팅 설정
+
+📂 **프로젝트 구조**
+
+```text
+todo-team/
+├─ dist/                     # 빌드 결과물 (Vercel 배포용)
+├─ node_modules/            # 설치된 패키지
+├─ public/
+│  └─ index.html            # 초기 HTML 템플릿
+├─ src/
+│  ├─ assets/               # 이미지·정적 리소스
+│  ├─ components/           # 재사용 가능한 UI 컴포넌트
+│  │  ├─ TodoContent/       # Todo 상세 컴포넌트
+│  │  ├─ Header.css
+│  │  ├─ Header.jsx
+│  │  ├─ Todo.css
+│  │  ├─ Todo.jsx
+│  │  ├─ ToEat.css
+│  │  ├─ ToEat.jsx
+│  │  ├─ ToWatch.css
+│  │  ├─ ToWatch.jsx
+│  │  ├─ ToWear.css
+│  │  └─ ToWear.jsx
+│  ├─ homepage/             # Home 화면 관련 구성 요소
+│  │  ├─ Home.css
+│  │  ├─ Home.jsx
+│  │  ├─ TodoSection.css
+│  │  ├─ TodoSection.jsx
+│  │  ├─ ToEatSection.css
+│  │  ├─ ToEatSection.jsx
+│  │  ├─ ToWatchSection.css
+│  │  ├─ ToWatchSection.jsx
+│  │  ├─ ToWearSection.css
+│  │  └─ ToWearSection.jsx
+│  ├─ App.css
+│  ├─ App.jsx               # 전체 라우팅 및 레이아웃
+│  ├─ index.css
+│  └─ main.jsx              # React DOM 진입 파일
+├─ .gitignore
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ vercel.json              # Vercel 배포 설정
+└─ vite.config.js           # Vite 설정 파일
+```
+
+
+🔧 **설치 및 실행 방법**
+
+1️⃣ 프로젝트 클론
+git clone https://github.com/your-repo/todays-all.git
+
+2️⃣ 패키지 설치
+npm install
+
+3️⃣ 실행
+npm start
+
+🔑 **환경변수 설정 (.env)**
+
+프로젝트 루트에 .env 파일을 생성 후 다음 키 추가:
+
+REACT_APP_WEATHER_API_KEY=YOUR_API_KEY <br>
+REACT_APP_TMDB_API_KEY=YOUR_TMDB_KEY <br>
+REACT_APP_KAKAO_MAP_KEY=YOUR_KAKAO_KEY <br>
+
+👥 **팀 소개**
+| 역할    | 이름      | 기여 내용                                       |
+| ----- | ------- | ------------------------------------------- |
+| 🧭 팀장 | **이희수** | • Todo 섹션 개발<br>• 프로젝트 총괄 진행<br>• Header 작성 |
+| 👤 팀원 | **강연우** | • ToWear 섹션 개발<br>• 메인 Home 레이아웃 구성         |
+| 👤 팀원 | **천다솜** | • ToWatch 섹션 개발<br>• 프로젝트 보조 및 전체 흐름 지원     |
+| 👤 팀원 | **권혜지** | • ToEat 섹션 개발<br>• 프로젝트 보조 및 자료 수집          |
+
+📌 **향후 개선 예정**
+
+OAuth 로그인 기능
+
+사용자별 즐겨찾기 저장
+
+반응형 UI 개선
+
+추천 알고리즘 강화
+
+🙌 **마치며**
+
+이 프로젝트는 일상을 간편하고 즐겁게 만들기 위해 제작되었습니다.
+날씨·영화·맛집·할 일 등 **"오늘 필요한 모든 것"**을 한곳에서 확인하세요!
+
+---
+➕ **Figma 링크**
+
+📝 ToDo <br>
+
+👉https://www.figma.com/design/JHyeciuBIETfb5LEhxr67D/Todo?node-id=0-1&t=g6t8YKqzBfh3vYbN-1
+
+👕 ToWear 
+
+👉 https://www.figma.com/make/JBrud8g6VLNeBS05YZDfkz/Home-Screen-with-Thumbnails?node-id=0-1&p=f&t=IX4TGF9v5n5LkcYK-0
+
+🎬 ToWatch
+
+👉 https://www.figma.com/design/emUqLUsiU7hFQypY6lp039/%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=0-1&p=f&t=41zN9gXDQNuW3TGp-0
+
+🍽️ ToEat
+
+👉 https://www.figma.com/design/r4Te4DcFX7sf1QH93xRBkn/%EC%82%B0%EB%8C%80%ED%8A%B9-1%EC%A1%B0-ToEat?node-id=3-2&t=0jn4SAQXTjrucx2Z-1
