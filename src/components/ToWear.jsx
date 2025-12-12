@@ -251,6 +251,12 @@ export default function ToWear() {
     });
   }, []);
 
+  useEffect(() => {
+    if (temp !== null) {
+      setSliderValue(tempToSlider(temp));
+    }
+  }, [temp]);
+
   // 슬라이더 구간별 옷 선택
   const getClothingIndex = () => {
     if (sliderValue <= 20) return 0;
@@ -375,60 +381,62 @@ export default function ToWear() {
           ))}
         </div>
 
-        <div className="slider-box">
-          <div className="slider-labels">
-            <span>두꺼운 옷</span>
-            <span>얇은 옷</span>
-          </div>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={sliderValue}
-            onChange={(e) => setSliderValue(Number(e.target.value))}
-            className="slider"
-          />
-          <div className="slider-buttons">
-            <button
-              type="button"
-              className="slider-btn left-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                setSliderValue((v) => Math.max(v - 25, 0));
+        {temp !== null && (
+          <div className="slider-box">
+            <div className="slider-labels">
+              <span>두꺼운 옷</span>
+              <span>얇은 옷</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={sliderValue}
+              onChange={(e) => setSliderValue(Number(e.target.value))}
+              className="slider"
+            />
+            <div className="slider-buttons">
+              <button
+                type="button"
+                className="slider-btn left-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSliderValue((v) => Math.max(v - 25, 0));
+                }}
+              >
+                <FaLongArrowAltLeft />
+              </button>
+              <button
+                type="button"
+                className="slider-btn right-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSliderValue((v) => Math.min(v + 25, 100));
+                }}
+              >
+                <FaLongArrowAltRight />
+              </button>
+            </div>
+            <p
+              className="slider-label"
+              style={{
+                left: `calc(${sliderValue}% -12px)`,
+                color: getGrandientColor(sliderValue),
               }}
             >
-              <FaLongArrowAltLeft />
-            </button>
-            <button
-              type="button"
-              className="slider-btn right-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                setSliderValue((v) => Math.min(v + 25, 100));
+              슬라이더를 움직여 옷의 두께를 조절하세요
+            </p>
+            <p
+              className="slider-label button-label"
+              style={{
+                left: `calc(${sliderValue}% -12px)`,
+                color: getGrandientColor(sliderValue),
               }}
             >
-              <FaLongArrowAltRight />
-            </button>
+              버튼을 눌러 옷의 두께를 조절하세요
+            </p>
           </div>
-          <p
-            className="slider-label"
-            style={{
-              left: `calc(${sliderValue}% -12px)`,
-              color: getGrandientColor(sliderValue),
-            }}
-          >
-            슬라이더를 움직여 옷의 두께를 조절하세요
-          </p>
-          <p
-            className="slider-label button-label"
-            style={{
-              left: `calc(${sliderValue}% -12px)`,
-              color: getGrandientColor(sliderValue),
-            }}
-          >
-            버튼을 눌러 옷의 두께를 조절하세요
-          </p>
-        </div>
+        )}
       </div>
     </div>
   );
