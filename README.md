@@ -4,7 +4,7 @@ React 기반으로 제작된 일상 추천 통합 서비스입니다.
 사용자의 위치 · 날씨 · 날짜 · 취향 등을 기반으로
 할 일 / 옷차림 / 영화 / 맛집을 한 화면에서 확인하고 추천받을 수 있습니다.
 
-사이트 주소 : https://todo-team2.vercel.app/
+사이트 주소 : https://todo-team-project-eosin.vercel.app/
 
 🚀 **주요 기능**
 
